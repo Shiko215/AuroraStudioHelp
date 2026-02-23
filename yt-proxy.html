@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Aurora Studio - YouTube Proxy</title>
+    <style>
+        /* 讓影片完全填滿畫面，不留任何邊框或滾動條 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 取得網址列中的 v 參數 (例如 ?v=QSVKhPHtCjQ)
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoId = urlParams.get('v');
+
+        if (videoId) {
+            // 動態生成帶有您網站合法來源的 YouTube iframe
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=0&rel=0`;
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            document.body.appendChild(iframe);
+        } else {
+            // 防呆機制：如果沒有提供 ID
+            document.body.innerHTML = '<div style="color:#64748b; font-family:sans-serif; text-align:center; margin-top:20%; font-size:14px;">Video ID missing. (Aurora Studio Proxy)</div>';
+        }
+    </script>
+</body>
+</html>
