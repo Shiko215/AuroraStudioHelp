@@ -1,25 +1,135 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-HK">
 <head>
-  <meta charset="UTF-8">
-  <title>Aurora Studio Help Center | 官方手冊中心</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: sans-serif; text-align: center; padding: 80px 20px; background: #0d1117; color: #c9d1d9; }
-    h1 { color: #58a6ff; }
-    a { color: #8be9fd; text-decoration: none; font-size: 1.3em; }
-    a:hover { text-decoration: underline; }
-    ul { list-style: none; padding: 0; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
+    <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
+    <title>Aurora Studio | Help Center</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --accent-blue: #58a6ff; /* Project Numazu Blue */
+            --accent-red: #ff7b72;  /* Revenant Red */
+            --border-color: #30363d;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', "Microsoft JhengHei", system-ui, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--accent-blue), #bc8cff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: #8b949e;
+            margin-bottom: 40px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .card.revenant:hover {
+            border-color: var(--accent-red);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+        }
+
+        .card.revenant h2 {
+            color: var(--accent-red);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #8b949e;
+            margin-bottom: 0;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #484f58;
+        }
+
+        .contact-links a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
-  <h1>📖 Aurora Studio 官方手冊中心</h1>
-  <p>歡迎！這裡提供所有作品的互動導覽與說明（中/英/日支援）</p>
-  <ul>
-    <li><a href="Numazu/Numazu-Manual.html">→ Project Numazu Manual（OMSI 2）</a></li>
-    <li><a href="#">→ Revenant of Tsushima Guide（準備中 / Demo 專屬）</a></li>
-    <li><a href="https://www.aurora-studio.org">← 返回官網</a></li>
-  </ul>
-  <p style="margin-top: 60px; font-size: 0.9em;">有問題？聯絡：contact@aurora-studio.org | Discord https://discord.gg/S6bSWSdck4</p>
+
+<div class="container">
+    <h1>📖 Aurora Studio</h1>
+    <p class="subtitle">互動導覽與技術說明中心 (中/英/日支援)</p>
+
+    <div class="grid">
+        <a href="Manual_Project_Numazu_OMSI_2_EN+JP+TC.html" class="card">
+            <h2>→ Project Numazu Manual</h2>
+            <p>OMSI 2 官方授權 DLC 操作指南。<br>探索沼津市的每一條巴士路線。</p>
+        </a>
+
+        <a href="#" class="card revenant">
+            <h2>→ 津島・魂鬼 (開發中)</h2>
+            <p>江戶時代第一人稱神道探索遊戲。<br>Demo 專屬指南與故事背景預覽。</p>
+        </a>
+    </div>
+
+    <footer>
+        <div class="contact-links">
+            <a href="mailto:contact@aurora-studio.org">Email</a> | 
+            <a href="https://discord.gg/S6bSWSdck4" target="_blank">Discord</a>
+        </div>
+        <p>© 2026 Aurora Studio. All rights reserved.</p>
+    </footer>
+</div>
+
 </body>
 </html>
