@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/v1/68d7b579d57652029ec28fd5/08ca4c28-f314-40cc-b061-f0c0a336202b/AuroraShiko.png">
+    <title>Project Numazu - Local Discovery Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        
+        body { 
+            font-family: 'Inter', 'Noto Sans TC', 'Noto Sans JP', sans-serif; 
+            background-color: #080a0f; 
+            color: #e2e8f0; 
+            scroll-behavior: smooth; 
+        }
+
+        .hero-section {
+            background: linear-gradient(to bottom, rgba(8, 10, 15, 0.4), #080a0f), 
+                        url('https://images.squarespace-cdn.com/content/v1/68d7b579d57652029ec28fd5/b64e6148-f1e7-4c28-883b-c098ede58441/1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+        }
+
+        .guide-card {
+            background: #11141d;
+            border: 1px solid #1e293b;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .guide-card:hover {
+            transform: translateY(-8px);
+            border-color: #4f46e5;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .category-tag {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 800;
+            background: #1e293b;
+            color: #94a3b8;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .back-manual {
+            color: #818cf8;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .back-manual:hover {
+            color: white;
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed top-0 w-full z-50 bg-[#080a0f]/80 backdrop-blur-xl border-b border-slate-800 px-8 py-4 flex justify-between items-center">
+        <a href="index.html" class="back-manual">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span id="back-text">返回駕駛手冊</span>
+        </a>
+        <div class="flex gap-2">
+            <button onclick="setLanguage('zh-tw')" id="btn-zh-tw" class="lang-btn active">繁體</button>
+            <button onclick="setLanguage('zh-cn')" id="btn-zh-cn" class="lang-btn">简体</button>
+            <button onclick="setLanguage('ja')" id="btn-ja" class="lang-btn">日本語</button>
+            <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">EN</button>
+        </div>
+    </header>
+
+    <div class="hero-section flex flex-col items-center justify-center text-center px-6">
+        <div class="bg-indigo-600 px-4 py-1 rounded-full text-[10px] font-black tracking-[0.3em] mb-4 shadow-lg shadow-indigo-500/20">VIRTUAL TOUR</div>
+        <h1 id="hero-title" class="text-5xl md:text-7xl font-black text-white tracking-tighter mb-4">沼津發現之旅</h1>
+        <p id="hero-desc" class="text-slate-400 max-w-2xl font-medium">不僅僅是駕駛，更是一場關於靜岡縣海濱之城的深度探索。</p>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="guide-grid">
+            <!-- 動態生成內容 -->
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-slate-900 text-center">
+        <div class="flex items-center justify-center gap-4 mb-8">
+            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-white">N</div>
+            <span class="text-xs font-bold tracking-widest text-slate-500 uppercase">Aurora Studio x Negi-Kyu</span>
+        </div>
+        <p class="text-[10px] text-slate-700 uppercase tracking-[0.5em]">&copy; 2026 Project Numazu Discovery Center.</p>
+    </footer>
+
+    <script>
+        const translations = {
+            'zh-tw': {
+                back: "返回駕駛手冊",
+                hero_title: "沼津深度指南",
+                hero_desc: "帶您領略靜岡縣最純粹的港口文化與自然景緻。",
+                items: [
+                    { title: "沼津港 (Numazu Port)", cat: "景點", color: "blue", desc: "擁有「深海水族館」與大型水閘「展望設施」，是地圖的核心營運區。" },
+                    { title: "沼津干物 (Dried Fish)", cat: "美食", color: "orange", desc: "鯵魚干產量全日第一。在車站周邊能買到最道地的干物特產。" },
+                    { title: "千本濱 (Senbonhama)", cat: "自然", color: "green", desc: "駿河灣旁的壯麗松林，亦是欣賞富士山倒影的最佳場所。" },
+                    { title: "聖地巡禮 (Holy Site)", cat: "文化", color: "purple", desc: "著名動畫作品的取景地。駕駛巴士穿梭時，不妨留意熟悉的街景。" },
+                    { title: "東海道本線 (JR Line)", cat: "交通", color: "indigo", desc: "沼津作為靜岡交通樞紐，地圖中亦完美還原了鐵路與轉乘體系。" }
+                ]
+            },
+            'zh-cn': {
+                back: "返回驾驶手册",
+                hero_title: "沼津深度指南",
+                hero_desc: "带您领略静冈县最纯粹的港口文化与自然景致。",
+                items: [
+                    { title: "沼津港 (Numazu Port)", cat: "景点", color: "blue", desc: "拥有“深海主题水族馆”与大型水闸“展望设施”，是地图的核心运营区。" },
+                    { title: "沼津干物 (Dried Fish)", cat: "美食", color: "orange", desc: "鲹鱼干产量全日第一。在车站周边能买到最地道的干物特产。" },
+                    { title: "千本滨 (Senbonhama)", cat: "自然", color: "green", desc: "沿着骏河湾绵延的松林，亦是欣赏富士山倒影的最佳场所。" },
+                    { title: "圣地巡礼 (Holy Site)", cat: "文化", color: "purple", desc: "著名动画作品的取景地。驾驶公交穿梭時，不妨留意熟悉的街景。" }
+                ]
+            },
+            'ja': {
+                back: "マニュアルに戻る",
+                hero_title: "沼津ディスカバリー",
+                hero_desc: "静岡県沼津市の魅力、港町文化、そして豊かな自然を巡る旅。",
+                items: [
+                    { title: "沼津港", cat: "観光", color: "blue", desc: "深海水族館や大型展望水門「びゅうお」があり、マップの中心的なエリアです。" },
+                    { title: "沼津のひもの", cat: "グルメ", color: "orange", desc: "あじのひもの生産量日本一。街を歩くと香ばしい香りが漂ってきます。" },
+                    { title: "千本浜公園", cat: "自然", color: "green", desc: "駿河湾沿いに続く松林。晴れた日には富士山の絶景が楽しめます。" },
+                    { title: "聖地巡礼", cat: "文化", color: "purple", desc: "多くのアニメ作品の舞台として知られ、見覚えのある風景がマップ内に点在します。" }
+                ]
+            },
+            'en': {
+                back: "Back to Manual",
+                hero_title: "Numazu Discovery",
+                hero_desc: "Explore the authentic port culture and breathtaking views of Shizuoka, Japan.",
+                items: [
+                    { title: "Numazu Port", cat: "Spot", color: "blue", desc: "Features the Deep Sea Aquarium and the 'Byuo' gate. A core area in the map." },
+                    { title: "Numazu Himono", cat: "Food", color: "orange", desc: "Numazu is Japan's #1 producer of dried horse mackerel. A must-try local delicacy." },
+                    { title: "Senbonhama", cat: "Nature", color: "green", desc: "A magnificent pine forest along Suruga Bay with stunning views of Mt. Fuji." },
+                    { title: "Holy Site Pilgrimage", cat: "Culture", color: "purple", desc: "Discover iconic locations from world-famous anime while driving through the city." }
+                ]
+            }
+        };
+
+        const state = { lang: 'zh-tw' };
+
+        function setLanguage(lang) {
+            state.lang = lang;
+            renderGuide();
+        }
+
+        const colorMap = {
+            blue: "bg-blue-500/10 text-blue-400 border-blue-500/20",
+            orange: "bg-orange-500/10 text-orange-400 border-orange-500/20",
+            green: "bg-green-500/10 text-green-400 border-green-500/20",
+            purple: "bg-purple-500/10 text-purple-400 border-purple-500/20",
+            indigo: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+        };
+
+        function renderGuide() {
+            const data = translations[state.lang] || translations['en'];
+            
+            document.getElementById('back-text').innerText = data.back;
+            document.getElementById('hero-title').innerText = data.hero_title;
+            document.getElementById('hero-desc').innerText = data.hero_desc;
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === `btn-${state.lang}`));
+
+            let html = '';
+            data.items.forEach(item => {
+                const colorClass = colorMap[item.color] || colorMap.blue;
+                html += `
+                    <div class="guide-card p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="category-tag ${colorClass} border">${item.cat}</span>
+                            <div class="w-1.5 h-1.5 bg-slate-700 rounded-full"></div>
+                        </div>
+                        <h3 class="text-xl font-black text-white mb-4 tracking-tight">${item.title}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">${item.desc}</p>
+                        <div class="mt-8 pt-8 border-t border-slate-800 flex justify-end">
+                            <span class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">Wiki Reference</span>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('guide-grid').innerHTML = html;
+        }
+
+        window.onload = () => {
+            const lang = navigator.language || navigator.userLanguage;
+            if (lang.startsWith('ja')) state.lang = 'ja';
+            else if (lang.startsWith('zh-CN')) state.lang = 'zh-cn';
+            else if (lang.startsWith('zh')) state.lang = 'zh-tw';
+            else state.lang = 'en';
+            renderGuide();
+        };
+    </script>
+</body>
+</html>

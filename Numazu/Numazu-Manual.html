@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    
-    <!-- Favicon 設定 -->
-    <link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
+	<link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
     <link rel="apple-touch-icon" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
-
     <title>Project Numazu - Map & Vehicle Official Manual</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -100,7 +97,6 @@
 </head>
 <body class="flex">
 
-    <!-- Sidebar Navigation -->
     <aside class="sidebar w-72 flex-shrink-0 bg-[#0d0f14] sticky top-0 hidden md:flex flex-col">
         <div class="p-8 flex-1">
             <div class="flex items-center gap-4 mb-8">
@@ -111,7 +107,6 @@
                 </div>
             </div>
 
-            <!-- Level Selector (Sidebar) -->
             <div class="mb-8 p-4 bg-[#1a1d24] rounded-xl border border-slate-800">
                 <p class="text-[10px] text-slate-400 font-bold uppercase tracking-wider mb-3 text-center" id="level-title">讀者體驗模式</p>
                 <div class="flex flex-col gap-2">
@@ -139,12 +134,10 @@
         </div>
     </aside>
 
-    <!-- Main Content Area -->
     <main class="content-area flex-1 relative bg-[#0d0f14]">
         <header class="sticky top-0 z-20 bg-[#0d0f14]/90 backdrop-blur-xl border-b border-slate-800 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
             <div class="md:hidden font-bold text-white text-lg">Numazu Manual</div>
             
-            <!-- Mobile Level Selector -->
             <div class="md:hidden flex gap-2">
                 <button onclick="setLevel('newbie')" class="level-btn px-2" data-level="newbie">🔰</button>
                 <button onclick="setLevel('inter')" class="level-btn px-2" data-level="inter">🚌</button>
@@ -152,15 +145,15 @@
             </div>
 
             <div class="flex gap-2 ml-auto">
-                <button onclick="setLanguage('zh')" id="btn-zh" class="lang-btn active">中文</button>
+                <button onclick="setLanguage('zh')" id="btn-zh" class="lang-btn active">繁體中文</button>
+                <button onclick="setLanguage('zh_cn')" id="btn-zh_cn" class="lang-btn">简体中文</button>
                 <button onclick="setLanguage('en')" id="btn-en" class="lang-btn">English</button>
                 <button onclick="setLanguage('ja')" id="btn-ja" class="lang-btn">日本語</button>
             </div>
         </header>
 
         <div id="main-content" class="max-w-5xl mx-auto p-6 md:p-16">
-            <!-- Content will be Dynamic -->
-        </div>
+            </div>
     </main>
 
     <script>
@@ -323,8 +316,151 @@
 					thanks: "特別鳴謝"
 				},
 				community_h: "💬 回饋與社群 (Community)",
-				community_p: "我們重視您的意見！"
+				community_p: "我們重視您的意見！",
+				tour_guide_desc: "想更深入了解這座富士山腳下的美麗港都嗎？請參閱我們的虛擬官方旅遊指南：",
+				tour_guide_btn: "⛩️ 探索沼津市 (官方觀光指南)"
 			},
+            zh_cn: {
+                level_title: "读者体验模式",
+                level_newbie: "🔰 新手上路 (极简)",
+                level_inter: "🚌 实习司机 (进阶)",
+                level_vet: "🛠️ 资深老鸟 (硬核)",
+
+                welcome_title: "OMSI 2 Add-on Project Numazu 沼津计划",
+                welcome_desc: "这是一场对静冈县海滨之城的深情致敬。本手册会根据您的「驾驶经验」动态显示适合的内容，请先在左侧或上方选择您的驾驶等级！",
+                nav: {
+                    welcome: '👋 欢迎使用',
+                    setup: '🚀 优化与推荐配置',
+                    map_intro: '🗺️ 城市与地图简介',
+                    quick_start: '⚡ 极简 3 分钟发车',
+                    diff_culture: '🎌 日系巴士文化与按键',
+                    traffic_rules: '🚦 日本交通法规 (必看)',
+                    route_guide: '🛤️ 路线驾驶指南',
+                    start: '🔑 引擎冷启动全流程',
+                    driving: '🕹️ 变速箱与底盘物理',
+                    advanced: '🛡️ 进阶安全与自动化',
+                    ibis: '📟 报站代码表',
+                    dev: '🛠️ 开发者 [setvar] 指南',
+                    credits: '✨ 制作团队',
+                    community: '💬 反馈与社群'
+                },
+
+                quick_start_h: "⚡ 3分钟内让巴士动起来 (极速上手)",
+                quick_start_desc: "觉得复杂的开关太多？别担心，跟着这三个步骤，立刻把车开上路！",
+                quick_start_steps: [
+                    "按下 <kbd>E</kbd> 与 <kbd>M</kbd> 启动引擎与电源。",
+                    "踩住刹车，按下 <kbd>D</kbd> 切入前进档位。",
+                    "按下 <kbd>.</kbd> 放开驻车手刹车，踩油门出发！"
+                ],
+                quick_start_video_h: "📺 懒人包教学视频",
+                quick_start_video_desc: "文字太无聊？直接看教学视频 (提供 B站 与 YouTube 双源)：",
+
+                diff_culture_h: "🎌 日系巴士操作逻辑与差异",
+                diff_culture_desc: "如果您习惯了欧卡或德国 OMSI 原生巴士，请注意日本巴士的两大差异：",
+                diff_culture_points: [
+                    "<b>中门上车、前门下车：</b> 乘客会从后方的中门上车并抽取整理券，下车时才到前门付款。前门按键：<kbd>/</kbd>，中门按键：<kbd>*</kbd>",
+                    "<b>变速箱保护：</b> 日系巴士为保护变速箱，<b>必须</b>完全踩稳刹车 <kbd>Num 2</kbd>，才能按 <kbd>D</kbd> 入档，否则会入档失败。"
+                ],
+
+                traffic_rules_h: "🚦 日本交通法规与安全指南",
+                traffic_rules_desc: "无论您是新手还是老司机，在日本道路上驾驶都必须遵守当地法规。请观看安全短片，或直接阅读下方的「文字版重点」：",
+                traffic_switch_hint: "🎥 加载缓慢？将鼠标移至视频上方，可于右上角手动切换线路 (YouTube / Bilibili)",
+                
+                traffic_fallback_title: "安全限制 (Local File Restriction)",
+                traffic_fallback_desc: "为遵守浏览器安全政策，本地文件无法直接内嵌播放。请点击下方按钮前往观看，或直接阅读下方的「文字版重点」。",
+                traffic_fallback_btn: "▶️ 于 YouTube 观看 (Watch on YouTube)",
+                traffic_text_h: "📖 交通规则文字版重点 (离线可读)",
+                traffic_text_rules: [
+                    "🚗 <b>左侧通行：</b> 日本道路实施左侧通行，方向盘在右侧。",
+                    "🚶 <b>礼让行人：</b> 转弯时，斑马线上的行人拥有绝对优先权。",
+                    "🛑 <b>停看听：</b> 行经铁路平交道 (道口) 前必须「完全停止」再开。",
+                    "🚦 <b>严守号志：</b> 切勿闯红灯，市区限速通常为 40km/h。"
+                ],
+
+                setup_h: "🚀 优化与推荐配置",
+                setup_patch: "必要优化：OMSI 2 4GB Patch",
+                setup_patch_desc: "强烈建议在安装地图前，确保您的 OMSI.exe 已经应用了 4GB Patch，以避免大场景下发生内存不足（Out of Memory）错误。",
+                setup_dlc: "推荐安装模组与 DLC",
+                setup_dlc_notes: "搭配以下内容可获得最佳视觉与功能体验：",
+                setup_dlc_list: [
+                    "Downloadpack Vol. 12 – AI People – Asia Edition (提供更真实的日本街头人群)",
+                    "Enhanced Environment Pack (优化光影与天空质感)",
+                    "OmniNavigation (建议将地图设定中的 Terrain 大小调整为 50m x 50m 以获得最佳兼容性)"
+                ],
+                setup_asian: "手动启用亚洲乘客 (选配)",
+                setup_asian_desc: "若您已安装亚洲人型 DLC，请按照以下步骤手动切换：",
+                setup_asian_steps: [
+                    "前往地图目录：`Maps/Project_Numazu/`",
+                    "删除原有的 `humans.txt` 与 `drivers.txt` 文件",
+                    "将 `humans-Asian.txt` 重新命名为 `humans.txt`",
+                    "将 `drivers_Asian.txt` 重新命名为 `drivers.txt` (移除 _Asian 后缀)"
+                ],
+                map_intro_h: "🗺️ 地图故事与背景",
+                map_intro_p1: "沼津市（Numazu City）坐落于静冈县东部，是前往伊豆半岛的重要门户。地图制作团队致力于 1:1 还原当地的街景。",
+                map_features_h: "💡 地图制作特色",
+                map_features: ["真实窄路体验", "富士山绝景", "自定义日系物件", "最佳化 FPS 调校"],
+                route_h: "运营路线深度导览",
+                route_nis: "NIS 回送：由车厂出发至车站的必经之路。",
+                route_n12: "快速往返沼津駅与港口市场。",
+                route_n13: "穿梭于商店街与港口间的循环线。",
+                route_n41: "前往明电舎工业区的通勤线路。",
+                route_n45: "经由主要干道往返沼津駅与沼津港。",
+                timetable_title: "互动式联合时刻表",
+                timetable_desc: "获取所有巴士路线与 NR 铁路换乘的完整运营时间表。强烈建议专业驾驶员以此维持准点。",
+                timetable_btn: "打开 Numazu_Station_TimeTable.html",
+                route_n12_title: "沼12 N12 (沼津駅-沼津港) 假日特急",
+                route_n13_title: "沼13 N13 (沼津駅-沼津港)",
+                route_n41_title: "N41 (沼津駅 - 明电舎)",
+                route_n45_title: "N45 (沼津駅 - 沼津港)",
+                
+                start_h: "🔑 硬核：引擎冷启动全流程",
+                start_p1: "本模组真实还原五十铃 4HK1-TCS 引擎的电气联锁逻辑，请严格遵守以下操作：",
+                start_list: ["1. 插入钥匙", "2. 开启主电源 (Main Power) - 确保气压表作动", "3. 点火启动并等待自检完成"],
+                start_warning: "警告：引擎运转时切勿关闭主电源，将导致 ECU 判定错误并熄火。",
+                
+                driving_h: "🕹️ 变速箱与底盘物理",
+                trans_h: "Allison 6AT 自动变速箱逻辑",
+                trans_p: "挂入档位前**必须踩住刹车**。点击仪表板左侧的 MODE 按钮可切换至 Power Mode 延迟换档时机。",
+                height_h: "Kneeling 与 Leveling 车身倾斜控制",
+                height_p: "开启开关后，车门开启时空气悬挂会自动泄气使车身侧倾下降。",
+                
+                advanced_h: "🛡️ 进阶安全系统详解",
+                edss_h: "EDSS (紧急驾驶停止系统)",
+                edss_p: "发生紧急情况时按下红色按钮，车辆会发出警报并立即切断动力、强力制动直到完全停止。",
+                stop_h: "Idling-Stop (自动启停系统)",
+                stop_p: "拉起手刹车并深踩刹车，当绿灯亮起时引擎会自动关闭以节能。",
+                
+                fare_title: "📟 IBIS 与整理券系统",
+                fare_desc: "模拟日本「整理券」机制，请由 IBIS 输入下方代码设定路线与票价区间。",
+                dev_h: "🛠️ 开发者专区：[setvar] 指南",
+                dev_p: "车辆涂装的 [*.cti] 文件包含多个 [setvar] 选项。进阶玩家与涂装制作者可自由调整：",
+                setvars: {
+                    door: "Door_chime_Type (门铃声类型)",
+                    door_desc: "0: 基础蜂鸣器 | 1: 叮咚铃声 | 2: 音乐铃声 | 3: 西铁式铃声",
+                    led: "Side_LED_Type (侧边看板类型)",
+                    led_desc: "0: 短版 | 1: 长版 | 2: LCD 显示屏",
+                    stop: "Bus_stop_sign (车内站名牌)",
+                    stop_desc: "0: 无 | 1: 新式数字 | 2: 旧式灯箱",
+                    plate: "Number_plate_type (车牌位置)",
+                    plate_desc: "0: 中置 | 1: 侧置"
+                },
+                paths_h: "材质路径说明",
+                paths_p: "自定义看板内容路径：",
+                credits_h: "✨ 制作团队 (Credits)",
+                credits_recognition: "特别致谢 Negi-kyu Workshop 提供的 ERGA Mio 模型组与脚本技术。",
+                team_sections: {
+                    core: "核心开发团队",
+                    vehicles: "车辆模型与 AI 资产",
+                    trains: "火车模型提供",
+                    resources: "物件资源",
+                    audio: "资产, 音效与音频",
+                    thanks: "特别鸣谢"
+                },
+                community_h: "💬 反馈与社群 (Community)",
+                community_p: "我们重视您的意见！",
+				tour_guide_desc: "想更深入了解这座富士山脚下的美丽港都吗？请参阅我们的虚拟官方旅游指南：",
+				tour_guide_btn: "⛩️ 探索沼津市 (官方观光指南)"
+            },
 			en: {
                 level_title: "Reader Experience Mode",
                 level_newbie: "🔰 Newbie (Quick Start)",
@@ -457,7 +593,9 @@
 					thanks: "Special Thanks"
 				},
 				community_h: "💬 Community",
-				community_p: "We value your input!"
+				community_p: "We value your input!",
+				tour_guide_desc: "Want to dive deeper into this beautiful port city at the foot of Mt. Fuji? Check out our official virtual tourist guide:",
+				tour_guide_btn: "⛩️ Explore Numazu (Official Tourist Guide)"
 			},
 			ja: {
                 level_title: "読者体験モード",
@@ -592,13 +730,15 @@
 					thanks: "スペシャルサンクス"
 				},
 				community_h: "💬 コミュニティ",
-				community_p: "フィードバックをお待ちしております。"
+				community_p: "フィードバックをお待ちしております。",
+				tour_guide_desc: "富士山の麓にあるこの美しい港町についてもっと知りたいですか？公式のバーチャル観光ガイドをご覧ください：",
+				tour_guide_btn: "⛩️ 沼津市を探索する (公式観光ガイド)"
 			}
 		};
 
         // 狀態管理
         const state = {
-            lang: 'en',
+            lang: 'zh',
             level: 'vet', // 預設老鳥，但可切換 (newbie, inter, vet)
             videoPlatform: 'youtube' // 預設影片平台
         };
@@ -775,24 +915,34 @@
                     </section>`;
             }
 
-            // --- 5. Map Intro ---
-            if (isVisible('map_intro')) {
-                navHTML += `<a href="#map_intro" class="nav-link">${data.nav.map_intro}</a>`;
-                contentHTML += `
-                    <section id="map_intro" class="section-anchor mb-24">
-                        <h3 class="text-3xl font-bold mb-8 text-white flex items-center gap-4">
-                            <span class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-sm font-bold">A</span>
-                            ${data.map_intro_h}
-                        </h3>
-                        <div class="card p-10">
-                            <p class="text-white font-bold text-xl mb-6">${data.map_intro_p1}</p>
-                            <h4 class="text-indigo-400 font-black mb-4 uppercase tracking-widest text-xs">${data.map_features_h}</h4>
-                            <ul class="list-disc list-inside space-y-2 text-slate-400">
-                                ${(data.map_features || []).map(f => `<li>${f}</li>`).join('')}
-                            </ul>
-                        </div>
-                    </section>`;
-            }
+           // --- 5. Map Intro ---
+			if (isVisible('map_intro')) {
+				navHTML += `<a href="#map_intro" class="nav-link">${data.nav.map_intro}</a>`;
+				contentHTML += `
+					<section id="map_intro" class="section-anchor mb-24">
+						<h3 class="text-3xl font-bold mb-8 text-white flex items-center gap-4">
+							<span class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-sm font-bold">A</span>
+							${data.map_intro_h}
+						</h3>
+						<div class="card p-10 relative overflow-hidden">
+							<div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -mr-10 -mt-10 pointer-events-none"></div>
+							
+							<p class="text-white font-bold text-xl mb-6 relative z-10">${data.map_intro_p1}</p>
+							<h4 class="text-indigo-400 font-black mb-4 uppercase tracking-widest text-xs relative z-10">${data.map_features_h}</h4>
+							<ul class="list-disc list-inside space-y-2 text-slate-400 mb-8 relative z-10">
+								${(data.map_features || []).map(f => `<li>${f}</li>`).join('')}
+							</ul>
+
+							<div class="pt-6 border-t border-slate-700/50 relative z-10">
+								<p class="text-sm text-slate-400 mb-4">${data.tour_guide_desc}</p>
+								<a href="https://help.aurora-studio.org/numazu_guide.html" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5">
+									<span>${data.tour_guide_btn}</span>
+									<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+								</a>
+							</div>
+						</div>
+					</section>`;
+			}
 
             // --- 5.5 Traffic Rules (All Tiers) ---
             if (isVisible('traffic_rules')) {
@@ -1047,7 +1197,6 @@
                                 <div><span class="credit-group-title">${data.team_sections.vehicles}</span>
                                     <p>蔥頭@Negi-kyu Workshop — Bus Kits</p>
                                     <p>CDLX / TORAKICHI-WORKS / Tororo / 3D Transport Studio</p>
-                                    <p>ppment @Aurora Studio — AI Models</p>
                                 </div>
                                 <div><span class="credit-group-title">${data.team_sections.audio}</span>
                                     <p>Lo Lolo — Ambient & JP Gov Sounds</p>             
@@ -1058,6 +1207,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm text-slate-400">
                                 <div><span class="credit-group-title">${data.team_sections.trains}</span>
                                     <p>myzk_Train_Tech — Japanese Train Models</p>
+									<p>ppment @Aurora Studio — Japanese Train Models</p>
                                 </div>
                                 <div><span class="credit-group-title">${data.team_sections.resources}</span>
                                     <p>Him@Aurora Studio / 5200@Negi-kyu Workshop / KamyFebruary / UKDT</p>
@@ -1127,9 +1277,10 @@
             try {
                 const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
                 const lang = navigator.language || navigator.userLanguage;
-                // 若時區為上海/重慶，或系統語言設定為簡體中文，自動切換至 Bilibili
+                // 若時區為上海/重慶，或系統語言設定為簡體中文，自動切換至 Bilibili，並預設套用簡體中文
                 if (tz === 'Asia/Shanghai' || tz === 'Asia/Chongqing' || lang.startsWith('zh-CN')) {
                     state.videoPlatform = 'bilibili';
+                    state.lang = 'zh_cn';
                 }
             } catch (e) {
                 console.warn("地理位置偵測失敗，套用預設 YouTube", e);
@@ -1139,6 +1290,4 @@
         };
     </script>
 </body>
-
 </html>
-
