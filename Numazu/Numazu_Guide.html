@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7f074600-825d-45f1-8aa1-f05d5e47710e/Aurora_Icon_2+-+%E8%A4%87%E8%A3%BD.png">
+    <title>探索沼津市 | 虛擬觀光官方指南 - Project Numazu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 引入 日文(JP)、繁體中文(TC)、簡體中文(SC) 的黑體(Sans)與明體(Serif) */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap');
+        
+        /* 預設字體 (繁體中文優先，找不到才找日文) */
+        body {
+            font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        .serif-font { 
+            font-family: 'Noto Serif TC', 'Noto Serif JP', serif; 
+        }
+
+        /* ===== 動態字體切換規則 ===== */
+        html[lang="zh-CN"] body { font-family: 'Noto Sans SC', sans-serif; }
+        html[lang="zh-CN"] .serif-font { font-family: 'Noto Serif SC', serif; }
+
+        html[lang="ja"] body { font-family: 'Noto Sans JP', sans-serif; }
+        html[lang="ja"] .serif-font { font-family: 'Noto Serif JP', serif; }
+        /* =========================== */
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.7)), url('https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/3d03210e-0690-4917-9aba-75a5c4d9dbf0/11.jpg?format=original&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .lang-btn {
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 700;
+            transition: all 0.3s;
+            color: #64748b;
+            cursor: pointer;
+        }
+        .lang-btn:hover { color: #2563eb; background: #eff6ff; }
+        .lang-btn.active { background: #2563eb; color: white; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-panel border-b border-white/20">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <span class="text-blue-600 font-black text-2xl tracking-tighter">NUMAZU</span>
+                <span class="text-xs text-slate-500 font-bold uppercase tracking-widest border-l-2 border-slate-300 pl-3">Virtual Tour</span>
+            </div>
+            
+            <div class="hidden lg:flex gap-8 text-sm font-bold text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition-colors" id="nav-about">關於沼津</a>
+                <a href="#spots" class="hover:text-blue-600 transition-colors" id="nav-spots">必訪景點</a>
+                <a href="#routes" class="hover:text-blue-600 transition-colors" id="nav-routes">推薦路線</a>
+                <a href="Manual_Project_Numazu.html" class="text-blue-600 hover:text-blue-800 transition-colors" id="nav-return">返回駕駛手冊</a>
+            </div>
+
+            <div class="flex gap-1 bg-slate-100 p-1 rounded-full border border-slate-200 ml-auto lg:ml-0">
+                <button onclick="setGuideLang('zh')" id="btn-zh" class="lang-btn active">繁</button>
+                <button onclick="setGuideLang('zh_cn')" id="btn-zh_cn" class="lang-btn">简</button>
+                <button onclick="setGuideLang('en')" id="btn-en" class="lang-btn">EN</button>
+                <button onclick="setGuideLang('ja')" id="btn-ja" class="lang-btn">JP</button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <p id="hero-sub" class="text-blue-300 font-bold tracking-[0.3em] uppercase text-sm mb-4 drop-shadow-md">Gateway to Izu Peninsula</p>
+        <h1 id="hero-title" class="serif-font text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 drop-shadow-xl leading-tight">
+            海風、富士山<br>與你的專屬旅程。
+        </h1>
+        <p id="hero-desc" class="text-lg md:text-xl text-slate-100 max-w-2xl font-light drop-shadow-md mb-12">
+            1:1 真實還原靜岡縣沼津市街景。為無法親自踏上日本土地的旅人，提供最極致的雲端觀光體驗。
+        </p>
+        <a href="#about" class="animate-bounce bg-white/20 hover:bg-white/30 backdrop-blur-md text-white p-4 rounded-full transition-all cursor-pointer">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </a>
+    </header>
+
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 id="about-title" class="serif-font text-3xl md:text-5xl font-bold text-slate-800 mb-8">光影與城市氛圍的交響曲</h2>
+            <p id="about-desc" class="text-slate-600 leading-relaxed text-lg mb-8">
+                坐落於靜岡縣東部，沼津市不僅是前往伊豆半島的重要樞紐，更以其豐富的漁產與壯麗的自然景觀聞名。我們精準捕捉了亞洲城市的獨特氛圍——從狹窄巷弄間錯落的光影、電線桿的配置，到傍晚時分染上橘紅色的天空。在這裡，每一次駕駛，都是一場沉浸式的在地巡禮。
+            </p>
+            <div class="w-24 h-1 bg-blue-500 mx-auto rounded-full"></div>
+        </div>
+    </section>
+
+    <section id="spots" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h3 id="spots-sub" class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-2">Sightseeing</h3>
+                    <h2 id="spots-title" class="serif-font text-4xl md:text-5xl font-bold text-slate-800">沼津名所巡禮</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-2xl shadow-xl mb-6 relative aspect-video bg-slate-200">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/d3d02efe-699e-4eed-99b1-7374df2ab328/20251120170636_1.jpg?format=original&w=1000&auto=format&fit=crop" alt="沼津港" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span id="spot1-tag" class="text-white border border-white px-3 py-1 rounded text-xs font-bold backdrop-blur-sm">N12 / N13 / N45 路線可達</span>
+                        </div>
+                    </div>
+                    <h4 id="spot1-title" class="text-2xl font-bold text-slate-800 mb-3">沼津港 (Numazu Port)</h4>
+                    <p id="spot1-desc" class="text-slate-600 leading-relaxed">
+                        感受海風的鹹味與不絕於耳的活力。這裡是靜岡縣首屈一指的漁港，駕駛巴士穿梭於此，你甚至能想像新鮮海產的香氣。
+                    </p>
+                </div>
+
+                <div class="group cursor-pointer md:mt-12">
+                    <div class="overflow-hidden rounded-2xl shadow-xl mb-6 relative aspect-video bg-slate-200">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/285a47ab-02c1-4049-bf24-cdc79875cf82/20260224003552_1.jpg?format=original&w=1000&auto=format&fit=crop" alt="水門 View-O" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 id="spot2-title" class="text-2xl font-bold text-slate-800 mb-3">大型展望水門 View-O</h4>
+                    <p id="spot2-desc" class="text-slate-600 leading-relaxed">
+                        沼津港的標誌性地標。駕駛巴士穿過這座巨大水門下方時，那種視覺壓迫感絕對令人難忘，這裡更是黃昏時分絕佳的光影打卡點！
+                    </p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-2xl shadow-xl mb-6 relative aspect-video bg-slate-200">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/6e3516e6-5023-4073-8b3e-832372a497da/Aqours_RG33_3.png?format=original&w=1000&auto=format&fit=crop" alt="仲見世商店街" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 id="spot3-title" class="text-2xl font-bold text-slate-800 mb-3">仲見世商店街</h4>
+                    <p id="spot3-desc" class="text-slate-600 leading-relaxed">
+                        充滿昭和風情與活力的心臟地帶，也是觀光客與在地居民交織的熱鬧街區。放慢車速，仔細觀察兩側的招牌，也許還能在某個轉角，發現屬於「墮天使」的熟悉印記呢。
+                    </p>
+                </div>
+                
+                <div class="group cursor-pointer md:mt-12">
+                    <div class="overflow-hidden rounded-2xl shadow-xl mb-6 relative aspect-video bg-slate-200">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/5c06afde-5a63-4e2f-913e-2df529ea3ca2/20260223235359_1.jpg?format=original&w=1000&auto=format&fit=crop" alt="明電舎工業區" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 id="spot4-title" class="text-2xl font-bold text-slate-800 mb-3">明電舎工業區 (Meidensha)</h4>
+                    <p id="spot4-desc" class="text-slate-600 leading-relaxed">
+                        城市運作的工業動脈。N41 路線將帶你駛離喧囂，在平交道前耐心等待貨物列車通過，體驗將通勤職人安全送達工廠的硬核駕駛日常。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="routes" class="py-24 bg-blue-600 text-white relative">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -mt-20 -mr-20"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <h2 id="routes-title" class="serif-font text-4xl font-bold text-center mb-16">選擇你的專屬路線</h2>
+            
+            <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div class="border-b md:border-b-0 md:border-r border-white/20 pb-6 md:pb-0 md:pr-6">
+						<div class="flex flex-wrap items-center gap-3 mb-4">
+							<span id="route1-tag1" class="bg-blue-500 text-white font-black px-3 py-1 rounded text-lg shadow-lg">N12 / N13</span>
+							<span id="route1-tag2" class="bg-orange-500 text-white font-black px-3 py-1 rounded text-lg shadow-lg">N45</span>
+							<h4 id="route1-title" class="text-xl font-bold w-full mt-2">港灣觀光與海景線</h4>
+						</div>
+						<p id="route1-desc" class="text-blue-100 text-sm leading-relaxed mb-4">
+							連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由主幹道直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。
+						</p>
+					</div>
+					
+					<div class="pt-2 md:pt-0 md:pl-6">
+						<div class="flex items-center gap-4 mb-4">
+							<span id="route2-tag" class="bg-orange-500 text-white font-black px-3 py-1 rounded text-lg shadow-lg">N41</span>
+							<h4 id="route2-title" class="text-xl font-bold">職人通勤生命線</h4>
+						</div>
+						<p id="route2-desc" class="text-blue-100 text-sm leading-relaxed mb-4">
+							考驗駕駛耐心與技術的硬核路線。N41 是一條遠離觀光區的純通勤路線，這裡沒有浪漫的海景，只有市井住宅區與明電舎工業區交織的真實城市噪音。你將體驗在早晚尖峰時刻，將職人們安全送達工廠的客運日常。
+						</p>
+					</div>
+				</div>
+                
+                <div class="mt-8 text-center pt-8 border-t border-white/20">
+                    <a href="Manual_Project_Numazu.html" id="btn-return" class="inline-block bg-white text-blue-600 font-bold px-8 py-3 rounded-full shadow-xl hover:bg-slate-100 hover:scale-105 transition-transform">
+                        啓動引擎 (返回手冊)
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 py-12 text-center border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-xl font-black text-white tracking-widest mb-2">AURORA STUDIO</h2>
+            <p class="text-slate-500 text-xs mb-8">Simulation & Experience Design</p>
+            <p class="text-slate-600 text-[10px] tracking-[0.2em] uppercase">
+                &copy; 2026 Project Numazu Official Product. Aurora Studio x Negi-Kyu Workshop.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const guideTrans = {
+            zh: {
+                nav_about: "關於沼津", nav_spots: "必訪景點", nav_routes: "推薦路線", nav_return: "返回駕駛手冊",
+                hero_sub: "Gateway to Izu Peninsula",
+                hero_title: "海風、富士山<br>與你的專屬旅程。",
+                hero_desc: "1:1 真實還原靜岡縣沼津市街景。為無法親自踏上日本土地的旅人，提供最極致的雲端觀光體驗。",
+                about_title: "光影與城市氛圍的交響曲",
+                about_desc: "坐落於靜岡縣東部，沼津市不僅是前往伊豆半島的重要樞紐，更以其豐富的漁產與壯麗的自然景觀聞名。我們精準捕捉了亞洲城市的獨特氛圍——從狹窄巷弄間錯落的光影、電線桿的配置，到傍晚時分染上橘紅色的天空。在這裡，每一次駕駛，都是一場沉浸式的在地巡禮。",
+                spots_sub: "Sightseeing", spots_title: "沼津名所巡禮",
+                spot1_tag: "N12 / N13 / N45 路線可達",
+                spot1_title: "沼津港 (Numazu Port)",
+                spot1_desc: "感受海風的鹹味與不絕於耳的活力。這裡是靜岡縣首屈一指的漁港，駕駛巴士穿梭於此，你甚至能想像新鮮海產的香氣。",
+                spot2_title: "大型展望水門 View-O",
+                spot2_desc: "沼津港的標誌性地標。駕駛巴士穿過這座巨大水門下方時，那種視覺壓迫感絕對令人難忘，這裡更是黃昏時分絕佳的光影打卡點！",
+                spot3_title: "仲見世商店街",
+                spot3_desc: "充滿昭和風情與活力的心臟地帶，也是觀光客與在地居民交織的熱鬧街區。放慢車速，仔細觀察兩側的招牌，也許還能在某個轉角，發現屬於「墮天使」的熟悉印記呢。",
+                spot4_title: "明電舎工業區 (Meidensha)",
+                spot4_desc: "城市運作的工業動脈。N41 路線將帶你駛離喧囂，在平交道前耐心等待貨物列車通過，體驗將通勤職人安全送達工廠的硬核駕駛日常。",
+                routes_title: "選擇你的專屬路線",
+                route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港灣觀光與海景線",
+                route1_desc: "連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由主幹道直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。",
+                route2_tag: "N41", route2_title: "職人通勤生命線",
+                route2_desc: "考驗駕駛耐心與技術的硬核路線。N41 是一條遠離觀光區的純通勤路線，這裡沒有浪漫的海景，只有市井住宅區與明電舎工業區交織的真實城市噪音。你將體驗在早晚尖峰時刻，將職人們安全送達工廠的客運日常。",
+                btn_return: "啓動引擎 (返回手冊)"
+            },
+            zh_cn: {
+                nav_about: "关于沼津", nav_spots: "必访景点", nav_routes: "推荐路线", nav_return: "返回驾驶手册",
+                hero_sub: "Gateway to Izu Peninsula",
+                hero_title: "海风、富士山<br>与你的专属旅程。",
+                hero_desc: "1:1 真实还原静冈县沼津市街景。为无法亲自踏上日本土地的旅人，提供最极致的云端观光体验。",
+                about_title: "光影与城市氛围的交响曲",
+                about_desc: "坐落于静冈县东部，沼津市不仅是前往伊豆半岛的重要枢纽，更以其丰富的渔产与壮丽的自然景观闻名。我们精准捕捉了亚洲城市的独特氛围——从狭窄巷弄间错落的光影、电线杆的配置，到傍晚时分染上橘红色的天空。在这里，每一次驾驶，都是一场沉浸式的在地巡礼。",
+                spots_sub: "Sightseeing", spots_title: "沼津名所巡礼",
+                spot1_tag: "N12 / N13 / N45 路线可达",
+                spot1_title: "沼津港 (Numazu Port)",
+                spot1_desc: "感受海风的咸味与不绝于耳的活力。这里是静冈县首屈一指的渔港，驾驶巴士穿梭于此，你甚至能想象新鲜海产的香气。",
+                spot2_title: "大型展望水门 View-O",
+                spot2_desc: "沼津港的标志性地标。驾驶巴士穿过这座巨大水门下方时，那种视觉压迫感绝对令人难忘，这里更是黄昏时分绝佳的光影打卡点！",
+                spot3_title: "仲见世商店街",
+                spot3_desc: "充满昭和风情与活力的心脏地带，也是观光客与在地居民交织的热闹街区。放慢车速，仔细观察两侧的招牌，也许还能在某个转角，发现属于「堕天使」的熟悉印记呢。",
+                spot4_title: "明电舎工业区 (Meidensha)",
+                spot4_desc: "城市运作的工业动脉。N41 路线将带你驶离喧嚣，在平交道前耐心等待货物列车通过，体验将通勤职人安全送达工厂的硬核驾驶日常。",
+                routes_title: "选择你的专属路线",
+                route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港湾观光与海景线",
+                route1_desc: "连接沼津駅与港口市场的核心观光网。N12 与 N13 带你穿梭于极具挑战性的狭窄住宅区，沿途能欣赏迷人的狩野川河景；而 N45 则是经由主干道直达沼津港的最速路线，车流量大，驶近港口时更能饱览广阔的静冈海景。",
+                route2_tag: "N41", route2_title: "职人通勤生命线",
+                route2_desc: "考验驾驶耐心与技术的硬核路线。N41 是一条远离观光区的纯通勤路线，这里没有浪漫的海景，只有市井住宅区与明电舎工业区交织的真实城市噪音。你将体验在早晚尖峰时刻，将职人们安全送达工厂的客运日常。",
+                btn_return: "启动引擎 (返回手册)"
+            },
+            en: {
+                nav_about: "About", nav_spots: "Attractions", nav_routes: "Routes", nav_return: "Back to Manual",
+                hero_sub: "Gateway to Izu Peninsula",
+                hero_title: "Sea Breeze, Mt. Fuji<br>& Your Journey.",
+                hero_desc: "A 1:1 scale recreation of Numazu City, Shizuoka. Delivering the ultimate virtual sightseeing experience for travelers who can't visit Japan in person.",
+                about_title: "A Symphony of Light and Urban Atmosphere",
+                about_desc: "Located in eastern Shizuoka, Numazu is not only the gateway to the Izu Peninsula but also famous for its rich seafood and stunning natural landscapes. We have accurately captured the unique atmosphere of an Asian city—from the intricate shadows in narrow alleys and utility pole placements to the orange-tinted evening sky. Every drive here is an immersive local pilgrimage.",
+                spots_sub: "Sightseeing", spots_title: "Landmarks of Numazu",
+                spot1_tag: "Accessible via N12/N13/N45",
+                spot1_title: "Numazu Port",
+                spot1_desc: "Feel the salty sea breeze and endless vitality. As one of Shizuoka's premier fishing ports, driving a bus through here lets you almost imagine the aroma of fresh seafood.",
+                spot2_title: "View-O Water Gate",
+                spot2_desc: "The iconic landmark of Numazu Port. Driving a bus directly under this massive water gate offers an unforgettable sense of scale. It's also a perfect spot for sunset screenshots!",
+                spot3_title: "Nakamise Shopping Street",
+                spot3_desc: "The heart of the city, full of Showa-era charm and energy. It's a bustling area where tourists and locals mingle. Slow down, observe the signs, and maybe you'll find familiar marks of a 'Fallen Angel'.",
+                spot4_title: "Meidensha Industrial Area",
+                spot4_desc: "The industrial artery of the city. Route N41 takes you away from the noise, waiting patiently at the level crossing for freight trains to pass, experiencing the hardcore reality of transporting commuters.",
+                routes_title: "Choose Your Route",
+                route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "Port Sightseeing & Ocean View",
+                route1_desc: "The core tourist network connecting Numazu Station and the Port Market. N12 and N13 take you through challenging narrow residential areas with charming views of the Kano River. N45 is the fastest route via the main arterial road, featuring heavy traffic and sweeping views of the Shizuoka coast as you approach the port.",
+                route2_tag: "N41", route2_title: "Commuter Lifeline",
+                route2_desc: "A hardcore route testing your patience and skills. N41 is a pure commuter line away from tourist areas. No romantic ocean views here—just the authentic urban noise of residential blocks mixing with the Meidensha industrial zone. Experience the reality of transit driving during morning and evening rush hours.",
+                btn_return: "Start Engine (Back to Manual)"
+            },
+            ja: {
+                nav_about: "沼津について", nav_spots: "観光スポット", nav_routes: "おすすめ路線", nav_return: "マニュアルへ戻る",
+                hero_sub: "Gateway to Izu Peninsula",
+                hero_title: "潮風、富士山<br>そしてあなたの旅。",
+                hero_desc: "静岡県沼津市の街並みを1:1スケールでリアルに再現。直接日本へ足を運べない旅行者のために、究極のバーチャル観光体験を提供します。",
+                about_title: "光と影が織りなす都市の雰囲気",
+                about_desc: "静岡県東部に位置する沼津市は、伊豆半島への重要な玄関口であるだけでなく、豊かな海産物と壮大な自然景観で知られています。狭い路地に落ちる影や電柱の配置、夕暮れ時のオレンジ色に染まる空まで、アジアの都市特有の雰囲気を精密に再現しました。ここでのドライブは、没入感あふれる聖地巡礼そのものです。",
+                spots_sub: "Sightseeing", spots_title: "沼津名所巡り",
+                spot1_tag: "N12 / N13 / N45 路線でアクセス可能",
+                spot1_title: "沼津港",
+                spot1_desc: "潮風の香りと絶え間ない活気を感じてください。静岡県屈指の漁港であり、ここをバスで走り抜ければ、新鮮な海産物の香りさえ想像できるでしょう。",
+                spot2_title: "大型展望水門 びゅうお",
+                spot2_desc: "沼津港のシンボル。この巨大な水門の下をバスでくぐり抜ける際の圧倒的なスケール感は必見です。夕暮れ時は最高のフォトスポットにもなります！",
+                spot3_title: "仲見世商店街",
+                spot3_desc: "昭和の風情と活気に満ちた街の中心部。観光客と地元の人々が交差する賑やかなエリアです。速度を落として両側の看板をよく見てみてください。もしかすると、「堕天使」の印を見つけられるかもしれません。",
+                spot4_title: "明電舎工業団地",
+                spot4_desc: "都市の機能を支える産業の動脈。N41路線は踏切で貨物列車の通過を待ちながら、通勤する職人たちを工場へ安全に送り届ける、ハードコアな日常業務を体験できます。",
+                routes_title: "路線を選択",
+                route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港湾観光と海景ルート",
+                route1_desc: "沼津駅と港市場を結ぶ中核観光ネットワーク。N12とN13は、難易度の高い狭隘な住宅街を抜け、魅力的な狩野川の風景を楽しめます。一方、N45は幹線道路を経由する沼津港への最速ルートで、交通量が多く、港に近づくにつれて広大な駿河湾の景色を一望できます。",
+                route2_tag: "N41", route2_title: "職人たちの通勤生命線",
+                route2_desc: "運転手の忍耐と技術が試されるハードコア路線。N41は観光エリアから離れた純粋な通勤路線です。ロマンチックな海の景色はありませんが、住宅街と明電舎工業団地が交じり合うリアルな都市の喧騒があります。朝夕のラッシュアワーに職人を工場へ送り届けるバス運転手の日常を体験してください。",
+                btn_return: "エンジン始動 (マニュアルへ)"
+            }
+        };
+
+        function setGuideLang(lang) {
+            const data = guideTrans[lang] || guideTrans['zh'];
+            
+            const htmlEl = document.documentElement;
+            if (lang === 'zh_cn') htmlEl.setAttribute('lang', 'zh-CN');
+            else if (lang === 'ja') htmlEl.setAttribute('lang', 'ja');
+            else if (lang === 'en') htmlEl.setAttribute('lang', 'en');
+            else htmlEl.setAttribute('lang', 'zh-HK');
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            for (const key in data) {
+                const el = document.getElementById(key.replace(/_/g, '-'));
+                if (el) el.innerHTML = data[key];
+            }
+        }
+
+        window.onload = () => {
+            try {
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                const lang = navigator.language || navigator.userLanguage;
+                if (tz === 'Asia/Shanghai' || tz === 'Asia/Chongqing' || lang.startsWith('zh-CN')) {
+                    setGuideLang('zh_cn');
+                } else if (lang.startsWith('en')) {
+                    setGuideLang('en');
+                } else if (lang.startsWith('ja')) {
+                    setGuideLang('ja');
+                } else {
+                    setGuideLang('zh');
+                }
+            } catch (e) {
+                setGuideLang('zh');
+            }
+        };
+    </script>
+</body>
+</html>
