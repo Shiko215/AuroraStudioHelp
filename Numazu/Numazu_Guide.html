@@ -70,6 +70,36 @@
         
         /* 圖片切換動畫 (淡入淡出) */
         .swap-image { transition: opacity 0.5s ease-in-out; }
+		
+		/* ===== 手機版專屬修復 (Mobile Fixes) ===== */
+        @media (max-width: 768px) {
+            /* 1. 強制取消視差滾動，修復 iOS/Android 背景圖過度放大問題 */
+            .hero-bg, .fireworks-bg {
+                background-attachment: scroll !important;
+                background-position: center center !important;
+                background-size: cover !important;
+                height: 100vh; /* 確保高度填滿 */
+            }
+
+            /* 2. 調整首屏文字大小與間距，避免文字把圖片完全擋住 */
+            #hero-title {
+                font-size: 3rem; /* 標題縮小一點 */
+                line-height: 1.2;
+            }
+            #hero-desc {
+                font-size: 1rem;
+                padding: 0 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            /* 3. 優化導覽列在手機上的顯示 (避免過度擁擠) */
+            nav .flex-wrap {
+                justify-content: center;
+            }
+            nav .text-2xl {
+                font-size: 1.25rem; /* NUMAZU LOGO 縮小 */
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
