@@ -10,7 +10,7 @@
         /* 引入 日文(JP)、繁體中文(TC)、簡體中文(SC) 的黑體(Sans)與明體(Serif) */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap');
         
-        /* 預設字體 (繁體中文優先，找不到才找日文) */
+        /* 預設字體 */
         body {
             font-family: 'Noto Sans TC', 'Noto Sans JP', sans-serif;
             background-color: #f8fafc;
@@ -22,16 +22,15 @@
             font-family: 'Noto Serif TC', 'Noto Serif JP', serif; 
         }
 
-        /* ===== 動態字體切換規則 ===== */
+        /* 動態字體切換規則 */
         html[lang="zh-CN"] body { font-family: 'Noto Sans SC', sans-serif; }
         html[lang="zh-CN"] .serif-font { font-family: 'Noto Serif SC', serif; }
 
         html[lang="ja"] body { font-family: 'Noto Sans JP', sans-serif; }
         html[lang="ja"] .serif-font { font-family: 'Noto Serif JP', serif; }
-        /* =========================== */
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
@@ -39,6 +38,13 @@
 
         .hero-bg {
             background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.3), rgba(15, 23, 42, 0.7)), url('https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/3d03210e-0690-4917-9aba-75a5c4d9dbf0/11.jpg?format=original&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .fireworks-bg {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url('https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/3b34dfc2-a780-44b5-817f-d9f8067caa0d/20260224_Firework.png?format=original&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -58,6 +64,12 @@
         }
         .lang-btn:hover { color: #2563eb; background: #eff6ff; }
         .lang-btn.active { background: #2563eb; color: white; }
+
+        /* 美食卡片懸停特效 */
+        .dining-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        
+        /* 圖片切換動畫 (淡入淡出) */
+        .swap-image { transition: opacity 0.5s ease-in-out; }
     </style>
 </head>
 <body class="antialiased">
@@ -72,6 +84,8 @@
             <div class="hidden lg:flex gap-8 text-sm font-bold text-slate-600">
                 <a href="#about" class="hover:text-blue-600 transition-colors" id="nav-about">關於沼津</a>
                 <a href="#spots" class="hover:text-blue-600 transition-colors" id="nav-spots">必訪景點</a>
+                <a href="#festival" class="hover:text-blue-600 transition-colors" id="nav-festival">夏日祭典</a>
+                <a href="#dining" class="hover:text-blue-600 transition-colors" id="nav-dining">美食與住宿</a>
                 <a href="#routes" class="hover:text-blue-600 transition-colors" id="nav-routes">推薦路線</a>
                 <a href="Manual_Project_Numazu.html" class="text-blue-600 hover:text-blue-800 transition-colors" id="nav-return">返回駕駛手冊</a>
             </div>
@@ -164,6 +178,131 @@
         </div>
     </section>
 
+    <section id="festival" class="fireworks-bg py-32 text-white relative">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-12">
+            <div class="flex-1 text-center md:text-left">
+                <h3 id="festival-sub" class="text-yellow-400 font-bold tracking-widest uppercase text-sm mb-4">Summer Tradition</h3>
+                <h2 id="festival-title" class="serif-font text-5xl md:text-6xl font-black mb-6 leading-tight drop-shadow-lg">
+                    沼津夏祭<br>狩野川花火大會
+                </h2>
+                <p id="festival-desc" class="text-slate-200 text-lg leading-relaxed max-w-xl drop-shadow-md">
+                    昭和23年延續至今的傳統盛會。在市中心狩野川河畔施放的璀璨煙火，是沼津夏夜最震撼的視覺饗宴。在遊戲中，你也能體驗這份屬於夏季的獨特氛圍。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dining" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 id="dining-sub" class="text-orange-500 font-bold tracking-widest uppercase text-sm mb-2">Gourmet & Stay</h3>
+                <h2 id="dining-title" class="serif-font text-4xl md:text-5xl font-bold text-slate-800">港口美食與休憩</h2>
+                <p id="dining-desc" class="text-slate-500 mt-4 max-w-2xl mx-auto">
+                    駕駛疲勞了嗎？將巴士停回車庫後，不妨來這些著名的在地名店，品嚐最道地的深海魚料理，或在河畔飯店享受一晚舒適的睡眠。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                
+                <div class="dining-card bg-slate-50 border border-slate-100 rounded-2xl p-6 transition-all duration-300">
+                    <div class="h-48 rounded-xl bg-slate-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/262c0833-3c0a-4db4-b777-054674d4a792/20251120143924_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Store">
+                        
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/27de7bb1-4fe7-4fbe-9836-68fad67d960b/Food_1.png?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="Food">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 See Food
+                        </span>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-800 mb-2">Numazu Burger</h4>
+                    <p id="food1-desc" class="text-sm text-slate-600 leading-relaxed">
+                        傳說中的「墮天使」漢堡店。必點名物「深海魚漢堡」，酥脆的口感搭配特製醬料，絕對是來沼津港不可錯過的聖地巡禮美食！
+                    </p>
+                </div>
+
+                <div class="dining-card bg-slate-50 border border-slate-100 rounded-2xl p-6 transition-all duration-300">
+                    <div class="h-48 rounded-xl bg-slate-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/8a607f74-6257-4e5a-980f-a1092de85fe6/20260224141727_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Store">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/d699823a-b7df-421c-ba51-a28ec100ff42/Food_3.png?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="Food">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 See Food
+                        </span>
+                    </div>
+                    <h4 id="food2-title" class="text-xl font-bold text-slate-800 mb-2">魚河岸 丸天 (Maruten)</h4>
+                    <p id="food2-desc" class="text-sm text-slate-600 leading-relaxed">
+                        視覺衝擊滿點！招牌「巨大海鮮炸餅丼 (Kakiage)」高聳如塔，挑戰你的胃容量。這裡提供最新鮮的駿河灣海產，CP 值極高。
+                    </p>
+                </div>
+
+                <div class="dining-card bg-slate-50 border border-slate-100 rounded-2xl p-6 transition-all duration-300">
+                    <div class="h-48 rounded-xl bg-slate-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/bc186f10-ef42-4950-92a2-dc4c77a1b4b5/20260113200234_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Store">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/655b33d3-7405-49e4-9cea-5b34198eda1f/640x640_rect_17303071.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="Food">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 See Food
+                        </span>
+                    </div>
+                    <h4 id="food3-title" class="text-xl font-bold text-slate-800 mb-2">濱燒 きしんちゃん</h4>
+                    <p id="food3-desc" class="text-sm text-slate-600 leading-relaxed">
+                        想體驗豪邁的漁夫料理嗎？在這裡你可以自己動手烤海鮮（濱燒），扇貝、榮螺在烤網上滋滋作響，配上一杯啤酒，不僅是美味，更是體驗。
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="dining-card bg-slate-50 border border-slate-100 rounded-2xl p-6 transition-all duration-300">
+                    <div class="h-48 rounded-xl bg-slate-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/694785be-e9e9-4edc-ad23-fead022d29cb/20260224140026_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Store">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/9998f13a-3b81-43e5-8b48-2d2d972cc92b/img_sld_ichifuji_02.webp?content-type=image%2Fwebpformat=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="Food">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 See Food
+                        </span>
+                    </div>
+                    <h4 id="food4-title" class="text-xl font-bold text-slate-800 mb-2">海天壽司 一富士丸</h4>
+                    <p id="food4-desc" class="text-sm text-slate-600 leading-relaxed">
+                        沼津港直送！即使是迴轉壽司，鮮度也絕對不輸高級料亭。特別推薦當季的生魩仔魚軍艦與深海魚壽司。
+                    </p>
+                </div>
+
+                <div class="dining-card bg-slate-50 border border-slate-100 rounded-2xl p-6 transition-all duration-300">
+                    <div class="h-48 rounded-xl bg-slate-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/a311f821-52a0-438b-a046-021ead12aab7/20260202030036_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Store">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7afdffc9-9f29-4adc-9013-a55231469a2b/Food_2.png?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="Food">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 See Food
+                        </span>
+                    </div>
+                    <h4 id="food5-title" class="text-xl font-bold text-slate-800 mb-2">松月 (Shogetsu)</h4>
+                    <p id="food5-desc" class="text-sm text-slate-600 leading-relaxed">
+                        深受內浦當地人與粉絲喜愛的甜點老舖。這裡的西點與和菓子不僅美味，更充滿了溫馨的昭和氛圍，是午後休憩的最佳選擇。
+                    </p>
+                </div>
+
+                <div class="dining-card bg-indigo-50 border border-indigo-100 rounded-2xl p-6 transition-all duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigo-200 rounded-full blur-2xl -mr-10 -mt-10 opacity-50"></div>
+                    <div class="h-48 rounded-xl bg-indigo-200 mb-6 overflow-hidden relative group cursor-pointer">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/8e13d5cb-8c0d-4c3e-987a-2f46c83364ea/20260224141020_1.jpg?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-100 group-hover:opacity-0" alt="Hotel Exterior">
+                        <img src="https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/7382861c-afc2-4ef6-982d-9d3268cf9ab5/IMG_1200.JPEG?format=original&w=800&fit=crop" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0 group-hover:opacity-100" alt="River View">
+                        
+                        <span class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-1 rounded backdrop-blur-sm opacity-100 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+                            📸 View
+                        </span>
+                    </div>
+                    <h4 id="hotel-title" class="text-xl font-bold text-indigo-900 mb-2">Numazu Riverside Hotel</h4>
+                    <p id="hotel-desc" class="text-sm text-slate-600 leading-relaxed">
+                        狩野川畔的頂級住宿體驗。從窗戶望去，可以將狩野川的波光粼粼與遠處的富士山盡收眼底。這是結束一天駕駛後，最奢華的犒賞。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="routes" class="py-24 bg-blue-600 text-white relative">
         <div class="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl -mt-20 -mr-20"></div>
         <div class="max-w-5xl mx-auto px-6 relative z-10">
@@ -178,7 +317,7 @@
 							<h4 id="route1-title" class="text-xl font-bold w-full mt-2">港灣觀光與海景線</h4>
 						</div>
 						<p id="route1-desc" class="text-blue-100 text-sm leading-relaxed mb-4">
-							連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由主幹道直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。
+							連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由千本浜公園直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。
 						</p>
 					</div>
 					
@@ -194,7 +333,7 @@
 				</div>
                 
                 <div class="mt-8 text-center pt-8 border-t border-white/20">
-                    <a href="Numazu-Manual.html" id="btn-return" class="inline-block bg-white text-blue-600 font-bold px-8 py-3 rounded-full shadow-xl hover:bg-slate-100 hover:scale-105 transition-transform">
+                    <a href="Manual_Project_Numazu.html" id="btn-return" class="inline-block bg-white text-blue-600 font-bold px-8 py-3 rounded-full shadow-xl hover:bg-slate-100 hover:scale-105 transition-transform">
                         啓動引擎 (返回手冊)
                     </a>
                 </div>
@@ -215,7 +354,7 @@
     <script>
         const guideTrans = {
             zh: {
-                nav_about: "關於沼津", nav_spots: "必訪景點", nav_routes: "推薦路線", nav_return: "返回駕駛手冊",
+                nav_about: "關於沼津", nav_spots: "必訪景點", nav_festival: "夏日祭典", nav_dining: "美食與住宿", nav_routes: "推薦路線", nav_return: "返回駕駛手冊",
                 hero_sub: "Gateway to Izu Peninsula",
                 hero_title: "海風、富士山<br>與你的專屬旅程。",
                 hero_desc: "1:1 真實還原靜岡縣沼津市街景。為無法親自踏上日本土地的旅人，提供最極致的雲端觀光體驗。",
@@ -231,15 +370,36 @@
                 spot3_desc: "充滿昭和風情與活力的心臟地帶，也是觀光客與在地居民交織的熱鬧街區。放慢車速，仔細觀察兩側的招牌，也許還能在某個轉角，發現屬於「墮天使」的熟悉印記呢。",
                 spot4_title: "明電舎工業區 (Meidensha)",
                 spot4_desc: "城市運作的工業動脈。N41 路線將帶你駛離喧囂，在平交道前耐心等待貨物列車通過，體驗將通勤職人安全送達工廠的硬核駕駛日常。",
+                
+                // 祭典 (ZH)
+                festival_sub: "Summer Tradition",
+                festival_title: "沼津夏祭<br>狩野川花火大會",
+                festival_desc: "昭和23年延續至今的傳統盛會。在市中心狩野川河畔施放的璀璨煙火，是沼津夏夜最震撼的視覺饗宴。在遊戲中，你也能體驗這份屬於夏季的獨特氛圍。",
+
+                // 美食 (ZH)
+                dining_sub: "Gourmet & Stay", dining_title: "港口美食與休憩",
+                dining_desc: "駕駛疲勞了嗎？將巴士停回車庫後，不妨來這些著名的在地名店，品嚐最道地的深海魚料理，或在河畔飯店享受一晚舒適的睡眠。",
+                food1_desc: "傳說中的「墮天使」漢堡店。必點名物「深海魚漢堡」，酥脆的口感搭配特製醬料，絕對是來沼津港不可錯過的聖地巡禮美食！",
+                food2_title: "魚河岸 丸天 (Maruten)",
+                food2_desc: "視覺衝擊滿點！招牌「巨大海鮮炸餅丼 (Kakiage)」高聳如塔，挑戰你的胃容量。這裡提供最新鮮的駿河灣海產，CP 值極高。",
+                food3_title: "濱燒 きしんちゃん",
+                food3_desc: "想體驗豪邁的漁夫料理嗎？在這裡你可以自己動手烤海鮮（濱燒），扇貝、榮螺在烤網上滋滋作響，配上一杯啤酒，不僅是美味，更是體驗。",
+                food4_title: "海天壽司 一富士丸",
+                food4_desc: "沼津港直送！即使是迴轉壽司，鮮度也絕對不輸高級料亭。特別推薦當季的生魩仔魚軍艦與深海魚壽司。",
+                food5_title: "松月 (Shogetsu)",
+                food5_desc: "深受內浦當地人與粉絲喜愛的甜點老舖。這裡的西點與和菓子不僅美味，更充滿了溫馨的昭和氛圍，是午後休憩的最佳選擇。",
+                hotel_title: "Numazu Riverside Hotel",
+                hotel_desc: "狩野川畔的頂級住宿體驗。從窗戶望去，可以將狩野川的波光粼粼與遠處的富士山盡收眼底。這是結束一天駕駛後，最奢華的犒賞。",
+
                 routes_title: "選擇你的專屬路線",
                 route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港灣觀光與海景線",
-                route1_desc: "連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由主幹道直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。",
+                route1_desc: "連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由千本浜公園直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。",
                 route2_tag: "N41", route2_title: "職人通勤生命線",
                 route2_desc: "考驗駕駛耐心與技術的硬核路線。N41 是一條遠離觀光區的純通勤路線，這裡沒有浪漫的海景，只有市井住宅區與明電舎工業區交織的真實城市噪音。你將體驗在早晚尖峰時刻，將職人們安全送達工廠的客運日常。",
                 btn_return: "啓動引擎 (返回手冊)"
             },
             zh_cn: {
-                nav_about: "关于沼津", nav_spots: "必访景点", nav_routes: "推荐路线", nav_return: "返回驾驶手册",
+                nav_about: "关于沼津", nav_spots: "必访景点", nav_festival: "夏日祭典", nav_dining: "美食与住宿", nav_routes: "推荐路线", nav_return: "返回驾驶手册",
                 hero_sub: "Gateway to Izu Peninsula",
                 hero_title: "海风、富士山<br>与你的专属旅程。",
                 hero_desc: "1:1 真实还原静冈县沼津市街景。为无法亲自踏上日本土地的旅人，提供最极致的云端观光体验。",
@@ -255,15 +415,36 @@
                 spot3_desc: "充满昭和风情与活力的心脏地带，也是观光客与在地居民交织的热闹街区。放慢车速，仔细观察两侧的招牌，也许还能在某个转角，发现属于「堕天使」的熟悉印记呢。",
                 spot4_title: "明电舎工业区 (Meidensha)",
                 spot4_desc: "城市运作的工业动脉。N41 路线将带你驶离喧嚣，在平交道前耐心等待货物列车通过，体验将通勤职人安全送达工厂的硬核驾驶日常。",
+                
+                // 祭典 (CN)
+                festival_sub: "Summer Tradition",
+                festival_title: "沼津夏祭<br>狩野川花火大会",
+                festival_desc: "昭和23年延续至今的传统盛会。在市中心狩野川河畔施放的璀璨烟火，是沼津夏夜最震撼的视觉飨宴。在游戏中，你也能体验这份属于夏季的独特氛围。",
+
+                // 美食 (CN)
+                dining_sub: "Gourmet & Stay", dining_title: "港口美食与休憩",
+                dining_desc: "驾驶疲劳了吗？将巴士停回车库后，不妨来这些著名的在地名店，品尝最道地的深海鱼料理，或在河畔饭店享受一晚舒适的睡眠。",
+                food1_desc: "传说中的「堕天使」汉堡店。必点名物「深海鱼汉堡」，酥脆的口感搭配特制酱料，绝对是来沼津港不可错过的圣地巡礼美食！",
+                food2_title: "鱼河岸 丸天 (Maruten)",
+                food2_desc: "视觉冲击满点！招牌「巨大海鲜炸饼丼 (Kakiage)」高耸如塔，挑战你的胃容量。这里提供最新鲜的骏河湾海产，CP 值极高。",
+                food3_title: "滨烧 きしんちゃん",
+                food3_desc: "想体验豪迈的渔夫料理吗？在这里你可以自己动手烤海鲜（滨烧），扇贝、荣螺在烤网上滋滋作响，配上一杯啤酒，不仅是美味，更是体验。",
+                food4_title: "海天寿司 一富士丸",
+                food4_desc: "沼津港直送！即使是回转寿司，鲜度也绝对不输高级料亭。特别推荐当季的生吻仔鱼军舰与深海鱼寿司。",
+                food5_title: "松月 (Shogetsu)",
+                food5_desc: "深受內浦当地人与粉丝喜爱的甜点老铺。这里的西点与和菓子不仅美味，更充满了温馨的昭和氛围，是午后休憩的最佳选择。",
+                hotel_title: "Numazu Riverside Hotel",
+                hotel_desc: "狩野川畔的顶级住宿体验。从窗户望去，可以将狩野川的波光粼粼与远处的富士山尽收眼底。这是结束一天驾驶后，最奢华的犒赏。",
+
                 routes_title: "选择你的专属路线",
                 route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港湾观光与海景线",
-                route1_desc: "连接沼津駅与港口市场的核心观光网。N12 与 N13 带你穿梭于极具挑战性的狭窄住宅区，沿途能欣赏迷人的狩野川河景；而 N45 则是经由主干道直达沼津港的最速路线，车流量大，驶近港口时更能饱览广阔的静冈海景。",
+                route1_desc: "连接沼津駅与港口市场的核心观光网。N12 与 N13 带你穿梭于极具挑战性的狭窄住宅区，沿途能欣赏迷人的狩野川河景；而 N45 则是经由千本浜公園直达沼津港的最速路线，车流量大，驶近港口时更能饱览广阔的静冈海景。",
                 route2_tag: "N41", route2_title: "职人通勤生命线",
                 route2_desc: "考验驾驶耐心与技术的硬核路线。N41 是一条远离观光区的纯通勤路线，这里没有浪漫的海景，只有市井住宅区与明电舎工业区交织的真实城市噪音。你将体验在早晚尖峰时刻，将职人们安全送达工厂的客运日常。",
                 btn_return: "启动引擎 (返回手册)"
             },
             en: {
-                nav_about: "About", nav_spots: "Attractions", nav_routes: "Routes", nav_return: "Back to Manual",
+                nav_about: "About", nav_spots: "Attractions", nav_festival: "Summer Festival", nav_dining: "Dining & Stay", nav_routes: "Routes", nav_return: "Back to Manual",
                 hero_sub: "Gateway to Izu Peninsula",
                 hero_title: "Sea Breeze, Mt. Fuji<br>& Your Journey.",
                 hero_desc: "A 1:1 scale recreation of Numazu City, Shizuoka. Delivering the ultimate virtual sightseeing experience for travelers who can't visit Japan in person.",
@@ -279,15 +460,36 @@
                 spot3_desc: "The heart of the city, full of Showa-era charm and energy. It's a bustling area where tourists and locals mingle. Slow down, observe the signs, and maybe you'll find familiar marks of a 'Fallen Angel'.",
                 spot4_title: "Meidensha Industrial Area",
                 spot4_desc: "The industrial artery of the city. Route N41 takes you away from the noise, waiting patiently at the level crossing for freight trains to pass, experiencing the hardcore reality of transporting commuters.",
+                
+                // 祭典 (EN)
+                festival_sub: "Summer Tradition",
+                festival_title: "Numazu Summer Festival &<br>Kano River Fireworks",
+                festival_desc: "A tradition dating back to 1948. The spectacular fireworks launched along the Kano River in the city center are the ultimate visual feast of a Numazu summer night. Experience this unique summer atmosphere directly in-game.",
+
+                // 美食 (EN)
+                dining_sub: "Gourmet & Stay", dining_title: "Local Delicacies & Stay",
+                dining_desc: "Tired from driving? Park the bus and visit these famous local spots. Taste authentic deep-sea fish dishes or enjoy a comfortable night by the river.",
+                food1_desc: "The legendary 'Fallen Angel' burger shop. The 'Deep Sea Fish Burger' is a must-try, featuring a crispy texture and special sauce. A holy site for anime pilgrims!",
+                food2_title: "Uogashi Maruten",
+                food2_desc: "A visual shock! Their signature giant 'Kakiage (Seafood Tempura) Tower' will challenge your appetite. They offer the freshest seafood from Suruga Bay at a great value.",
+                food3_title: "Hamayaki Kishinchan",
+                food3_desc: "Want to experience bold fisherman-style cuisine? Here you can grill your own seafood (Hamayaki). Scallops and turban shells sizzling on the grill with a beer—it's an experience.",
+                food4_title: "Kaiten Sushi Ichifujimaru",
+                food4_desc: "Direct from Numazu Port! Even though it's conveyor belt sushi, the freshness rivals high-end restaurants. Highly recommended: seasonal raw shirasu (whitebait) and deep-sea fish sushi.",
+                food5_title: "Shogetsu",
+                food5_desc: "A dessert shop loved by Uchiura locals and fans alike. Their western and Japanese sweets are delicious, and the shop is filled with a warm Showa-era atmosphere. Perfect for an afternoon break.",
+                hotel_title: "Numazu Riverside Hotel",
+                hotel_desc: "Premium accommodation by the Kano River. The view from the window captures the sparkling river and Mt. Fuji in the distance. The most luxurious reward after a day of driving.",
+
                 routes_title: "Choose Your Route",
                 route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "Port Sightseeing & Ocean View",
-                route1_desc: "The core tourist network connecting Numazu Station and the Port Market. N12 and N13 take you through challenging narrow residential areas with charming views of the Kano River. N45 is the fastest route via the main arterial road, featuring heavy traffic and sweeping views of the Shizuoka coast as you approach the port.",
+                route1_desc: "The core tourist network connecting Numazu Station and the Port Market. N12 and N13 take you through challenging narrow residential areas with charming views of the Kano River. N45 is the fastest route via the Senbonhama Park, featuring heavy traffic and sweeping views of the Shizuoka coast as you approach the port.",
                 route2_tag: "N41", route2_title: "Commuter Lifeline",
                 route2_desc: "A hardcore route testing your patience and skills. N41 is a pure commuter line away from tourist areas. No romantic ocean views here—just the authentic urban noise of residential blocks mixing with the Meidensha industrial zone. Experience the reality of transit driving during morning and evening rush hours.",
                 btn_return: "Start Engine (Back to Manual)"
             },
             ja: {
-                nav_about: "沼津について", nav_spots: "観光スポット", nav_routes: "おすすめ路線", nav_return: "マニュアルへ戻る",
+                nav_about: "沼津について", nav_spots: "観光スポット", nav_festival: "夏祭り", nav_dining: "グルメ・宿泊", nav_routes: "おすすめ路線", nav_return: "マニュアルへ戻る",
                 hero_sub: "Gateway to Izu Peninsula",
                 hero_title: "潮風、富士山<br>そしてあなたの旅。",
                 hero_desc: "静岡県沼津市の街並みを1:1スケールでリアルに再現。直接日本へ足を運べない旅行者のために、究極のバーチャル観光体験を提供します。",
@@ -303,9 +505,30 @@
                 spot3_desc: "昭和の風情と活気に満ちた街の中心部。観光客と地元の人々が交差する賑やかなエリアです。速度を落として両側の看板をよく見てみてください。もしかすると、「堕天使」の印を見つけられるかもしれません。",
                 spot4_title: "明電舎工業団地",
                 spot4_desc: "都市の機能を支える産業の動脈。N41路線は踏切で貨物列車の通過を待ちながら、通勤する職人たちを工場へ安全に送り届ける、ハードコアな日常業務を体験できます。",
+                
+                // 祭典 (JP)
+                festival_sub: "Summer Tradition",
+                festival_title: "沼津夏まつり・<br>狩野川花火大会",
+                festival_desc: "昭和23年から続く伝統行事。市街地の狩野川河川敷から打ち上げられる華麗な花火は、沼津の夏の夜を彩る最高の視覚的饗宴です。ゲーム内でも、この夏特有の雰囲気を体験できます。",
+
+                // 美食 (JP)
+                dining_sub: "Gourmet & Stay", dining_title: "港湾グルメと癒やしの宿",
+                dining_desc: "運転に疲れましたか？バスを車庫に入れた後は、地元の名店で本場の深海魚料理を味わったり、リバーサイドホテルで快適な夜を過ごしてみてはいかがでしょうか。",
+                food1_desc: "伝説の「堕天使」ゆかりのバーガーショップ。名物「深海魚バーガー」はサクサクの食感と特製ソースが絶妙。沼津港に来たら外せない聖地巡礼グルメです！",
+                food2_title: "魚河岸 丸天",
+                food2_desc: "インパクト抜群！名物「海鮮かき揚げ丼」は塔のようにそびえ立ち、あなたの胃袋に挑戦します。駿河湾の新鮮な魚介類をリーズナブルに楽しめます。",
+                food3_title: "浜焼き しんちゃん",
+                food3_desc: "豪快な漁師料理を体験したいですか？ここではホタテやサザエを自分で焼く「浜焼き」スタイルを楽しめます。網の上で焼ける音とビールは最高です。",
+                food4_title: "回転寿司 一富士丸",
+                food4_desc: "沼津港直送！回転寿司ながら、その鮮度は高級料亭に負けません。旬の生シラス軍艦や深海魚の寿司が特におすすめです。",
+                food5_title: "松月",
+                food5_desc: "地元の內浦人々やファンに愛される老舗菓子店。洋菓子も和菓子も絶品で、店内は温かい昭和の雰囲気に包まれています。午後の休憩に最適です。",
+                hotel_title: "沼津リバーサイドホテル",
+                hotel_desc: "狩野川のほとりにある上質なホテル。窓からは狩野川のきらめきと遠くの富士山を一望できます。一日の運転を終えた後の、最高の自分へのご褒美です。",
+
                 routes_title: "路線を選択",
                 route1_tag1: "N12 / N13", route1_tag2: "N45", route1_title: "港湾観光と海景ルート",
-                route1_desc: "沼津駅と港市場を結ぶ中核観光ネットワーク。N12とN13は、難易度の高い狭隘な住宅街を抜け、魅力的な狩野川の風景を楽しめます。一方、N45は幹線道路を経由する沼津港への最速ルートで、交通量が多く、港に近づくにつれて広大な駿河湾の景色を一望できます。",
+                route1_desc: "沼津駅と港市場を結ぶ中核観光ネットワーク。N12とN13は、難易度の高い狭隘な住宅街を抜け、魅力的な狩野川の風景を楽しめます。一方、N45は千本浜公園を経由する沼津港への最速ルートで、交通量が多く、港に近づくにつれて広大な駿河湾の景色を一望できます。",
                 route2_tag: "N41", route2_title: "職人たちの通勤生命線",
                 route2_desc: "運転手の忍耐と技術が試されるハードコア路線。N41は観光エリアから離れた純粋な通勤路線です。ロマンチックな海の景色はありませんが、住宅街と明電舎工業団地が交じり合うリアルな都市の喧騒があります。朝夕のラッシュアワーに職人を工場へ送り届けるバス運転手の日常を体験してください。",
                 btn_return: "エンジン始動 (マニュアルへ)"
