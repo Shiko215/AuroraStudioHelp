@@ -340,6 +340,28 @@
             </div>
         </div>
     </section>
+	
+	<section id="booking" class="py-32 bg-slate-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-20 bg-[url('https://images.squarespace-cdn.com/content/68d7b579d57652029ec28fd5/3d03210e-0690-4917-9aba-75a5c4d9dbf0/11.jpg?format=original&w=2000&auto=format&fit=crop')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/90 to-transparent"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 id="book-title" class="serif-font text-4xl md:text-6xl font-black mb-8 leading-tight">
+                準備好啟程了嗎？
+            </h2>
+            <p id="book-desc" class="text-slate-300 text-lg md:text-xl mb-12 leading-relaxed">
+                無需機票，即刻出發。在 OMSI 2 中體驗最真實的日本街道駕駛。<br>您的沼津之旅，只需一個點擊。
+            </p>
+            
+            <a href="https://store.steampowered.com/app/3880120/OMSI_2_Addon_Project_Numazu/" target="_blank" class="inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xl font-bold px-12 py-6 rounded-full shadow-2xl hover:shadow-blue-500/50 hover:-translate-y-1 transition-all group">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M11.979 0C5.668 0 .504 4.887.036 11.087l6.303 2.612C7.3 12.38 9.473 11.16 12 11.16c3.784 0 6.862 3.067 6.862 6.842 0 1.253-.352 2.427-.96 3.428l4.98 2.062C23.635 21.82 24 19.333 24 16.738 24 7.485 18.634 0 11.979 0zM5.333 14.282c-2.43 0-4.407 1.96-4.407 4.388 0 2.43 1.977 4.39 4.407 4.39s4.407-1.96 4.407-4.39c0-2.428-1.977-4.388-4.407-4.388zM5.333 20.9c-1.214 0-2.203-.984-2.203-2.23s.99-2.23 2.204-2.23c1.214 0 2.203.985 2.203 2.23s-.99 2.23-2.204 2.23zm6.758-5.32c-1.745 0-3.17.89-4.032 2.22l-2.316-.96c.925-2.617 3.422-4.49 6.348-4.49 3.714 0 6.726 3.01 6.726 6.723 0 1.21-.34 2.34-.925 3.3l-2.52-1.044c.32-.68.503-1.444.503-2.256 0-2.73-2.214-4.944-4.944-4.944h.16z"/></svg>
+                <span id="book-btn">立即預訂行程 (Steam)</span>
+                <svg class="w-6 h-6 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            
+            <p class="mt-8 text-slate-500 text-xs tracking-[0.3em] uppercase opacity-60">Add-on Project Numazu - Available Now</p>
+        </div>
+    </section>
 
     <footer class="bg-slate-900 py-12 text-center border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
@@ -396,7 +418,10 @@
                 route1_desc: "連接沼津駅與港口市場的核心觀光網。N12 與 N13 帶你穿梭於極具挑戰性的狹窄住宅區，沿途能欣賞迷人的狩野川河景；而 N45 則是經由千本浜公園直達沼津港的最速路線，車流量大，駛近港口時更能飽覽廣闊的靜岡海景。",
                 route2_tag: "N41", route2_title: "職人通勤生命線",
                 route2_desc: "考驗駕駛耐心與技術的硬核路線。N41 是一條遠離觀光區的純通勤路線，這裡沒有浪漫的海景，只有市井住宅區與明電舎工業區交織的真實城市噪音。你將體驗在早晚尖峰時刻，將職人們安全送達工廠的客運日常。",
-                btn_return: "啓動引擎 (返回手冊)"
+                btn_return: "啓動引擎 (返回手冊)",
+				book_title: "準備好啟程了嗎？",
+				book_desc: "無需機票，即刻出發。在 OMSI 2 中體驗最真實的日本街道駕駛。<br>您的沼津之旅，只需一個點擊。",
+				book_btn: "立即預訂行程 (Steam)"
             },
             zh_cn: {
                 nav_about: "关于沼津", nav_spots: "必访景点", nav_festival: "夏日祭典", nav_dining: "美食与住宿", nav_routes: "推荐路线", nav_return: "返回驾驶手册",
@@ -441,7 +466,10 @@
                 route1_desc: "连接沼津駅与港口市场的核心观光网。N12 与 N13 带你穿梭于极具挑战性的狭窄住宅区，沿途能欣赏迷人的狩野川河景；而 N45 则是经由千本浜公園直达沼津港的最速路线，车流量大，驶近港口时更能饱览广阔的静冈海景。",
                 route2_tag: "N41", route2_title: "职人通勤生命线",
                 route2_desc: "考验驾驶耐心与技术的硬核路线。N41 是一条远离观光区的纯通勤路线，这里没有浪漫的海景，只有市井住宅区与明电舎工业区交织的真实城市噪音。你将体验在早晚尖峰时刻，将职人们安全送达工厂的客运日常。",
-                btn_return: "启动引擎 (返回手册)"
+                btn_return: "启动引擎 (返回手册)",
+				book_title: "准备好启程了吗？",
+				book_desc: "无需机票，即刻出发。在 OMSI 2 中体验最真实的日本街道驾驶。<br>您的沼津之旅，只需一个点击。",
+				book_btn: "立即预订行程 (Steam)"
             },
             en: {
                 nav_about: "About", nav_spots: "Attractions", nav_festival: "Summer Festival", nav_dining: "Dining & Stay", nav_routes: "Routes", nav_return: "Back to Manual",
@@ -486,7 +514,10 @@
                 route1_desc: "The core tourist network connecting Numazu Station and the Port Market. N12 and N13 take you through challenging narrow residential areas with charming views of the Kano River. N45 is the fastest route via the Senbonhama Park, featuring heavy traffic and sweeping views of the Shizuoka coast as you approach the port.",
                 route2_tag: "N41", route2_title: "Commuter Lifeline",
                 route2_desc: "A hardcore route testing your patience and skills. N41 is a pure commuter line away from tourist areas. No romantic ocean views here—just the authentic urban noise of residential blocks mixing with the Meidensha industrial zone. Experience the reality of transit driving during morning and evening rush hours.",
-                btn_return: "Start Engine (Back to Manual)"
+                btn_return: "Start Engine (Back to Manual)",
+				book_title: "Ready to Depart?",
+				book_desc: "No flight ticket needed. Experience authentic Japanese driving in OMSI 2 now.<br>Your journey to Numazu is just one click away.",
+				book_btn: "Get Boarding Pass (Steam)"
             },
             ja: {
                 nav_about: "沼津について", nav_spots: "観光スポット", nav_festival: "夏祭り", nav_dining: "グルメ・宿泊", nav_routes: "おすすめ路線", nav_return: "マニュアルへ戻る",
@@ -531,7 +562,10 @@
                 route1_desc: "沼津駅と港市場を結ぶ中核観光ネットワーク。N12とN13は、難易度の高い狭隘な住宅街を抜け、魅力的な狩野川の風景を楽しめます。一方、N45は千本浜公園を経由する沼津港への最速ルートで、交通量が多く、港に近づくにつれて広大な駿河湾の景色を一望できます。",
                 route2_tag: "N41", route2_title: "職人たちの通勤生命線",
                 route2_desc: "運転手の忍耐と技術が試されるハードコア路線。N41は観光エリアから離れた純粋な通勤路線です。ロマンチックな海の景色はありませんが、住宅街と明電舎工業団地が交じり合うリアルな都市の喧騒があります。朝夕のラッシュアワーに職人を工場へ送り届けるバス運転手の日常を体験してください。",
-                btn_return: "エンジン始動 (マニュアルへ)"
+                btn_return: "エンジン始動 (マニュアルへ)",
+				book_title: "出発の準備はいいですか？",
+				book_desc: "新幹線の乗車券は不要です。OMSI 2 でリアルな日本の道路を今すぐ運転しましょう。<br>沼津への旅は、ワンクリックで始まります。",
+				book_btn: "旅はを予約 (Steam)"
             }
         };
 
