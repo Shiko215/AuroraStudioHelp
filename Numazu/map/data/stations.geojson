@@ -1,0 +1,19 @@
+{
+  "type": "FeatureCollection",
+  "name": "Project Numazu sample stations (approx WGS84 — replace from Busstops.cfg later)",
+  "features": [
+    {"type":"Feature","properties":{"id":"numazu_stn","name":"沼津駅 / Numazu Station","name_ja":"沼津駅","zone":"Numazu Stn","routes":["N12","N13","N41","N45"]},"geometry":{"type":"Point","coordinates":[138.8594, 35.1030]}},
+    {"type":"Feature","properties":{"id":"numazu_stn_south","name":"沼津駅南口エリア","name_ja":"沼津駅南","zone":"Numazu Stn","routes":["N12","N13","N41","N45"]},"geometry":{"type":"Point","coordinates":[138.8590, 35.1012]}},
+    {"type":"Feature","properties":{"id":"otemachi","name":"大手町 / Otemachi","name_ja":"大手町","zone":"Numazu Stn","routes":["N12","N13"]},"geometry":{"type":"Point","coordinates":[138.8572, 35.0985]}},
+    {"type":"Feature","properties":{"id":"tohoji","name":"東本町付近","name_ja":"東本町","zone":"Numazu Stn","routes":[]},"geometry":{"type":"Point","coordinates":[138.8620, 35.0998]}},
+    {"type":"Feature","properties":{"id":"port","name":"沼津港 / Numazu Port","name_ja":"沼津港","zone":"Numazu Port","routes":["N12","N13","N45"]},"geometry":{"type":"Point","coordinates":[138.8588, 35.0825]}},
+    {"type":"Feature","properties":{"id":"senbonhama","name":"千本浜公園付近","name_ja":"千本浜","zone":"Numazu Port","routes":["N45"]},"geometry":{"type":"Point","coordinates":[138.8520, 35.0860]}},
+    {"type":"Feature","properties":{"id":"asahicho","name":"旭町エリア","name_ja":"旭町","zone":"Local","routes":["N13"]},"geometry":{"type":"Point","coordinates":[138.8655, 35.0920]}},
+    {"type":"Feature","properties":{"id":"meidensha","name":"明電舎工場方面","name_ja":"明電舎","zone":"Industrial","routes":["N41"]},"geometry":{"type":"Point","coordinates":[138.8750, 35.0955]}},
+    {"type":"Feature","properties":{"id":"soechicho_depot","name":"添地町車庫エリア","name_ja":"添地町車庫","zone":"Depot","routes":[]},"geometry":{"type":"Point","coordinates":[138.8700, 35.1005]}},
+    {"type":"Feature","properties":{"id":"sea_paradise","name":"伊豆三津シーパラダイス","name_ja":"伊豆三津シーパラダイス","zone":"Uchiura","routes":["Cho11","N11"],"wip":false},"geometry":{"type":"Point","coordinates":[138.8965, 35.0275]}},
+    {"type":"Feature","properties":{"id":"mitsuzaka","name":"三津坂","name_ja":"三津坂","zone":"Uchiura","routes":["Cho11"],"wip":false},"geometry":{"type":"Point","coordinates":[138.9100, 35.0350]}},
+    {"type":"Feature","properties":{"id":"mito_junction","name":"三津ジャンクション付近","name_ja":"三津JCT","zone":"Uchiura","routes":["Cho11"]},"geometry":{"type":"Point","coordinates":[138.9050, 35.0310]}},
+    {"type":"Feature","properties":{"id":"izunagaoka","name":"伊豆長岡駅（WIP）","name_ja":"伊豆長岡駅","zone":"Uchiura","routes":["Cho11"],"wip":true},"geometry":{"type":"Point","coordinates":[138.9450, 35.0405]}}
+  ]
+}

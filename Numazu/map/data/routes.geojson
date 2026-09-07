@@ -1,0 +1,16 @@
+{
+  "type": "FeatureCollection",
+  "name": "Project Numazu sample routes (schematic — refine from TTData tracks later)",
+  "features": [
+    {"type":"Feature","properties":{"id":"N12","name":"N12 沼12 Holiday Express","color":"#2563eb","wip":false},
+     "geometry":{"type":"LineString","coordinates":[[138.8594,35.1030],[138.8590,35.1012],[138.8572,35.0985],[138.8575,35.0900],[138.8588,35.0825]]}},
+    {"type":"Feature","properties":{"id":"N13","name":"N13 沼13 via Asahicho","color":"#16a34a","wip":false},
+     "geometry":{"type":"LineString","coordinates":[[138.8594,35.1030],[138.8620,35.0998],[138.8655,35.0920],[138.8620,35.0865],[138.8588,35.0825]]}},
+    {"type":"Feature","properties":{"id":"N45","name":"N45 via Senbonhama","color":"#ca8a04","wip":false},
+     "geometry":{"type":"LineString","coordinates":[[138.8594,35.1030],[138.8550,35.0950],[138.8520,35.0860],[138.8588,35.0825]]}},
+    {"type":"Feature","properties":{"id":"N41","name":"N41 Meidensha weekday","color":"#dc2626","wip":false},
+     "geometry":{"type":"LineString","coordinates":[[138.8594,35.1030],[138.8650,35.0990],[138.8700,35.1005],[138.8750,35.0955]]}},
+    {"type":"Feature","properties":{"id":"Cho11","name":"長11 Cho11 Uchiura (partial WIP)","color":"#0891b2","wip":true},
+     "geometry":{"type":"LineString","coordinates":[[138.8965,35.0275],[138.9050,35.0310],[138.9100,35.0350],[138.9250,35.0375],[138.9450,35.0405]]}}
+  ]
+}

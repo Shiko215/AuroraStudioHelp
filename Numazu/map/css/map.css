@@ -1,0 +1,59 @@
+html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+#map { position: absolute; inset: 0; }
+.brand {
+  position: absolute; z-index: 1000; left: 12px; top: 12px;
+  background: rgba(15, 23, 42, 0.88); color: #f8fafc;
+  padding: 10px 14px; border-radius: 12px; max-width: min(360px, 70vw);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25); backdrop-filter: blur(8px);
+}
+.brand h1 { margin: 0 0 4px; font-size: 14px; font-weight: 800; letter-spacing: .02em; }
+.brand p { margin: 0; font-size: 11px; color: #94a3b8; line-height: 1.45; }
+.brand a { color: #67e8f9; }
+.station-dot { background: #2563eb; border: 2px solid #fff; border-radius: 50%; width: 12px; height: 12px; }
+.station-dot.wip { background: #f59e0b; }
+.leaflet-popup-content { font-size: 13px; }
+.leaflet-popup-content .zone { color: #64748b; font-size: 11px; }
+.leaflet-popup-content .wip-tag { color: #b45309; font-weight: 700; }
+
+.poi-dot { width: 14px; height: 14px; border-radius: 4px; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.35); }
+.poi-restaurant { background: #ef4444; border-radius: 50%; }
+.poi-anime_landmark { background: #a855f7; }
+.poi-gas { background: #22c55e; border-radius: 2px; }
+.poi-terminal { background: #0ea5e9; transform: rotate(45deg); }
+.poi-scenic { background: #14b8a6; border-radius: 50%; }
+.poi-other { background: #64748b; border-radius: 50%; }
+.boundary-label { font-weight: 800; color: #083344; }
+
+.editor-panel {
+  position: absolute; z-index: 1000; right: 12px; bottom: 24px;
+  width: min(320px, 92vw);
+  background: rgba(15, 23, 42, 0.94); color: #e2e8f0;
+  border-radius: 14px; padding: 12px 14px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  font-size: 12px;
+}
+.editor-panel h2 { margin: 0 0 8px; font-size: 13px; font-weight: 800; }
+.editor-panel label { display: block; margin: 8px 0 4px; color: #94a3b8; }
+.editor-panel input, .editor-panel select, .editor-panel textarea {
+  width: 100%; box-sizing: border-box; border-radius: 8px; border: 1px solid #334155;
+  background: #0f172a; color: #f8fafc; padding: 7px 8px; font: inherit;
+}
+.editor-panel textarea { min-height: 64px; resize: vertical; }
+.editor-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.editor-row button {
+  flex: 1; min-width: 90px; border: 0; border-radius: 8px; padding: 8px 10px;
+  font-weight: 700; cursor: pointer;
+}
+.btn-primary { background: #0891b2; color: #fff; }
+.btn-secondary { background: #334155; color: #e2e8f0; }
+.btn-danger { background: #7f1d1d; color: #fecaca; }
+.editor-hint { color: #64748b; font-size: 11px; margin-top: 8px; line-height: 1.4; }
+.editor-on .leaflet-container { cursor: crosshair; }
+
+.lang-row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.lang-btn {
+  border: 1px solid #334155; background: #0f172a; color: #cbd5e1;
+  border-radius: 999px; padding: 4px 10px; font-size: 11px; font-weight: 700; cursor: pointer;
+}
+.lang-btn.active { background: #0891b2; border-color: #0891b2; color: #fff; }

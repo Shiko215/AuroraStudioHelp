@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "name": "Project Numazu POIs — 人手補充地標",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_aquarium",
+        "name": "伊豆・三津シーパラダイス",
+        "name_en": "Izu Mito Sea Paradise",
+        "category": "anime_landmark",
+        "note": "內浦門面景點；長11／N11 相關。Love Live! Sunshine!! 現地取景氛圍。",
+        "routes": ["Cho11", "N11"],
+        "source": "manual",
+        "verified": false
+      },
+      "geometry": { "type": "Point", "coordinates": [138.8965, 35.0275] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_port_market",
+        "name": "沼津港鮮魚市場一帶",
+        "name_en": "Numazu Port Market area",
+        "category": "restaurant",
+        "note": "港區飲食／觀光；N12／N13／N45 終點氛圍。可再細分店名。",
+        "routes": ["N12", "N13", "N45"],
+        "source": "manual",
+        "verified": false
+      },
+      "geometry": { "type": "Point", "coordinates": [138.8595, 35.0818] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_gas_example",
+        "name": "（範例）加油站 — 請改名",
+        "name_en": "Example gas station",
+        "category": "gas",
+        "note": "範例點：複製這筆改座標與店名即可。",
+        "routes": [],
+        "source": "template",
+        "verified": false
+      },
+      "geometry": { "type": "Point", "coordinates": [138.8680, 35.0970] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "poi_depot",
+        "name": "添地町車庫（總站／出庫）",
+        "name_en": "Soechicho Depot",
+        "category": "terminal",
+        "note": "Mitsu / Izu 相關出庫氛圍；對應匯入點 Depot 區。",
+        "routes": [],
+        "source": "manual",
+        "verified": false
+      },
+      "geometry": { "type": "Point", "coordinates": [138.8700, 35.1005] }
+    }
+  ]
+}

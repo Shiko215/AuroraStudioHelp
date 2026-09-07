@@ -1,0 +1,25 @@
+{
+  "type": "FeatureCollection",
+  "name": "Project Numazu map extent (emphasized boundary)",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "map_extent_v01",
+        "name": "Project Numazu + Uchiura 大約可玩範圍",
+        "note": "示意界線，非正式行政界。請依實際圖磚範圍調整座標。",
+        "style": "emphasis"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [138.835, 35.115],
+          [138.960, 35.115],
+          [138.960, 35.015],
+          [138.835, 35.015],
+          [138.835, 35.115]
+        ]]
+      }
+    }
+  ]
+}

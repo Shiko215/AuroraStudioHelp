@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Numazu Online Map v0.4</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="css/map.css" />
+</head>
+<body>
+  <div class="brand">
+    <h1 data-i18n="brand_title">Project Numazu · Online Map v0.4</h1>
+    <p>
+      <span data-i18n="brand_sub">站／地標／路線繪製／地圖界線 · 多語系 Editor</span><br />
+      <a href="../Numazu_Manual.html" data-i18n="manual">← 回官方手冊</a>
+      · <a href="https://discord.gg/kejVATb5Bg">Discord</a>
+    </p>
+    <div class="lang-row" id="lang-row">
+      <button type="button" class="lang-btn active" data-lang="zh">繁中</button>
+      <button type="button" class="lang-btn" data-lang="zh_cn">简中</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ja">日本語</button>
+    </div>
+  </div>
+
+  <div class="editor-panel" id="editor-panel">
+    <h2 data-i18n="editor_title">🛠 Editor GUI</h2>
+    <label data-i18n="mode">模式</label>
+    <select id="edit-mode">
+      <option value="off" data-i18n="mode_off">瀏覽（關閉編輯）</option>
+      <option value="poi" data-i18n="mode_poi">點地圖 → 新增地標 POI</option>
+      <option value="station" data-i18n="mode_station">點地圖 → 新增巴士站</option>
+      <option value="route" data-i18n="mode_route">點地圖 → 畫路線折線</option>
+    </select>
+
+    <div id="point-fields">
+      <label data-i18n="category">類型 category（地標）</label>
+      <select id="edit-category">
+        <option value="restaurant">restaurant</option>
+        <option value="anime_landmark">anime_landmark</option>
+        <option value="gas">gas</option>
+        <option value="terminal">terminal</option>
+        <option value="scenic">scenic</option>
+        <option value="other">other</option>
+      </select>
+      <label data-i18n="name">名稱</label>
+      <input id="edit-name" placeholder="" />
+      <label data-i18n="note">備註 note</label>
+      <textarea id="edit-note" placeholder=""></textarea>
+      <label data-i18n="routes_for_point">路線（逗號分隔）</label>
+      <input id="edit-routes" placeholder="N12, N13, Cho11" />
+    </div>
+
+    <div id="route-fields" hidden>
+      <label data-i18n="route_id">路線代號 id</label>
+      <input id="route-id" value="NEW" />
+      <label data-i18n="route_name">顯示名稱</label>
+      <input id="route-name" />
+      <label data-i18n="route_color">顏色</label>
+      <input id="route-color" type="color" value="#2563eb" />
+      <label><input id="route-wip" type="checkbox" /> <span data-i18n="route_wip">WIP（虛線）</span></label>
+      <p class="editor-hint" data-i18n="route_hint"></p>
+    </div>
+
+    <div class="editor-row" id="route-actions" hidden>
+      <button type="button" class="btn-primary" id="btn-finish-route" data-i18n="finish_route">完成路線</button>
+      <button type="button" class="btn-secondary" id="btn-undo-vertex" data-i18n="undo_vertex">撤銷頂點</button>
+    </div>
+    <div class="editor-row">
+      <button type="button" class="btn-secondary" id="btn-download-pois" data-i18n="dl_pois">下載 pois</button>
+      <button type="button" class="btn-secondary" id="btn-download-stations" data-i18n="dl_stations">下載 stations</button>
+    </div>
+    <div class="editor-row">
+      <button type="button" class="btn-secondary" id="btn-download-routes" data-i18n="dl_routes">下載 routes.geojson</button>
+      <button type="button" class="btn-danger" id="btn-undo" data-i18n="undo">撤銷上一個新增</button>
+    </div>
+    <p class="editor-hint" data-i18n="footer_hint"></p>
+  </div>
+
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/map.js"></script>
+</body>
+</html>
